@@ -54,6 +54,11 @@ class webController extends Controller
             "title" => "DetailBarang"
         ]);
     }
-   
-}
 
+    public function notif()
+    {
+        return view('notif',[
+            "title" => "notif"
+        ]);
+    }
+}

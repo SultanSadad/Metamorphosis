@@ -28,6 +28,7 @@ Route::get('status', [webController::class, 'status']);
 Route::get('Notifikasi', [webController::class, 'Notifikasi']);
 Route::get('Keranjang', [webController::class, 'Keranjang']);
 Route::get('Profile', [webController::class, 'Profile']);
+Route::get('Notifikasi', [webController::class, 'notif']);
 
 Route::get('DetailBarang', [webController::class, 'DetailBarang']);
 Route::get('Konfirmasi', [webController::class, 'Konfirmasi']);
