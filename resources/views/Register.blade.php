@@ -7,14 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-
-<div class="grid grid-cols-2 h-screen">
-  <div class="col-span-1 flex items-center justify-center">
-  <div class="flex flex-col items-center">
-    <div class="order">
-    <img src="image/Register.png" class="w-120 ms-40" alt="Register Image">
-    </div>
-</div>
+  <div class="flex mt-20 justify-center">
 
   </div>
   <div class="col-span-1 flex items-center justify-center">

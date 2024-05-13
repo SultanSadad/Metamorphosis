@@ -13,44 +13,50 @@
     </div>
 </div>
 <div>
-    <div class="flex mt-24 mb-32 mx-auto container flex-col">
+    <div class="flex mt-12 mb-12 mx-auto container flex-col">
         <div class="grid grid-cols-2 gap-4">
             <div>
-                <h1 class="text-4xl font-sans">Stalking feed artis tapi budget ga nyampe? Preloved branded solutionnya, sis!</h1>
+                <h1 class="text-4xl mt-10 font-sans">Stalking feed artis tapi budget ga nyampe? Sokin lah Metamorphosis!</h1>
+                <p class="font-sans text-justify mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam corrupti quis quod cupiditate quibusdam, ullam laborum laboriosam reiciendis, delectus dignissimos soluta voluptates officia modi quisquam pariatur deleniti animi nemo nostrum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus earum eligendi consectetur dolorum non necessitatibus? Ex magni vero repudiandae, reprehenderit minus nemo pariatur unde, sint non temporibus quasi molestias quam!</p>
             </div>
-            <div>
-                <span class="font-sarif">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, explicabo quos nobis earum autem nesciunt inventore reiciendis facere officia quisquam enim. Culpa eaque ab optio obcaecati ut quam id quas.</span>
+            <div class="ms-40">
+                <img src="/image/ft.jpeg" class="h-80 rounded" alt="">
             </div>
         </div>
     </div>
-        <div class="grid mt-11">
-            <div class="py-16 bg-gray-200">
+    <div class="grid mt-3">
+        <div class="py-24 bg-gray-200">
             <div class="flex mx-auto container flex-col ">
-                <h1 class="text-3xl  text-gray-900  text-center font-sans">Sumber Barang</h1>
-                <div class="mt-3 text-center"><span class="font-light text-lg">Dibatam, mencari sepatu bekas menjadi petualangan yang menyenangkan bagi kami. Kami sering menjelajahi pasar tradisional seperti Pasar Jodoh dan Pasar Victoria, tempat kami menemukan beragam sepatu bekas dengan harga terjangkau dan cerita unik di setiap sudutnya. Selain itu, kami juga senang menjelajahi toko-toko preloved langsung, di mana kami bisa menemukan merek-merek terkenal dengan harga yang lebih terjangkau daripada membeli barang baru. Terkadang, kami menemukan sepatu bekas yang masih dalam kondisi bagus, menambah kepuasan dalam mencari barang preloved. Bergabung dengan komunitas penggemar sepatu di Batam juga memberikan kami akses ke informasi terbaru tentang koleksi sepatu bekas, serta kesempatan untuk berbagi cerita dan pengalaman dengan sesama penggemar sepatu. Pengalaman mencari sepatu bekas di Batam menjadi semakin menarik dan berwarna dengan adanya komunitas ini.</span>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <h1 class="text-5xl ms-40 font-sans mt-16 font-bold">Misi Kami</h1>
+                    </div>
+                    <div class="">
+                        <p class="font-sans text-justify">Menjadi pusat inspirasi bagi para pencinta sepatu dengan menghidupkan kembali keindahan masa lalu melalui koleksi sepatu bekas yang unik dan berharga."
+
+                            Dengan visi ini, "Metamorphosis" menekankan peran mereka sebagai tidak hanya tempat untuk membeli sepatu, tetapi juga sebagai sumber inspirasi bagi para pencinta sepatu. Ini menekankan keunikan dan nilai koleksi sepatu bekas yang ditawarkan oleh toko, dan bagaimana setiap pasangan sepatu memiliki potensi untuk menginspirasi dan menghidupkan kembali kenangan dan gaya masa lalu.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="flex mt-11 mx-auto container flex-col ">
-    <div class="grid grid-cols-4 gap-6">
 
-        <div class="flex">
-            <img src="/image/samba.jpg" class="w-96 h-92" alt="">
         </div>
-        <div class="flex">
-            <img src="/image/nb.jpeg" class="w-96 h-92" alt="">
-        </div>
-        <div class="flex">
-            <img src="/image/onit.jpg" class="w-96 h-92" alt="">
-        </div>
-        <div class="flex">
-            <img src="/image/B.jpg" class="w-96 h-92" alt="">
+    </div>
+    <div class="grid">
+        <div class="py-24 bg-sky-500">
+            <div class="flex mx-auto container flex-col ">
+                <div class="grid grid-cols-2 gap-4 text-white">
+                    <div>
+                        <p class="font-sans text-justify">Misi kami di Metamorphosis adalah untuk menyediakan pengalaman belanja yang memuaskan bagi setiap pelanggan dengan menyajikan koleksi sepatu bekas berkualitas tinggi yang dipilih secara cermat. Kami berkomitmen untuk tidak hanya memberikan akses kepada sepatu berkualitas, tetapi juga untuk mengedepankan nilai-nilai keberlanjutan dengan memperpanjang siklus hidup produk dan mengurangi dampak lingkungan. Melalui layanan pelanggan yang ramah, transparan, dan profesional, kami berusaha untuk menginspirasi dan memberdayakan pelanggan kami untuk mengekspresikan gaya pribadi mereka dengan percaya diri dan tanpa kompromi.</p>
+                    </div>
+                    <div class="">
+                        <h1 class="text-5xl ms-60 font-sans mt-16 font-bold">Visi Kami</h1>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
-<hr class="mt-6 ">
 <div class="flex items-center justify-center  bg-white py-4">
     <div class="flex flex-col">
         <!-- Notes -->
@@ -62,9 +68,7 @@
                         <!-- Header -->
 
                         <!-- Description -->
-                        <p class="text-gray-700 text-lg font-light">
-                            Metamorphosis Team
-                        </p>
+                        <h3 class="font-bold text-3xl mt-6">Metamorphosis Team</h3>
                     </div>
                 </div>
 
