@@ -16,61 +16,46 @@
 <!-- Header -->
 
 <body>
-
-
-    <div class="navbar text-neutral text-1xl">
+    <div class="navbar bg-base-100">
         <div class="navbar-start">
             <div class="dropdown">
-                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
                     </svg>
                 </div>
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><a>Item 3</a></li>
+                    <li><a href="index">Shop</a></li>
+                    <li><a href="/guest/AboutUs">Tentang Kami</a></li>
+                    <li><a>Kebijakan Privasi</a></li>
                 </ul>
             </div>
-            <img src="/image/logo1.png" class="w-12 ms-4" alt="">
         </div>
-        <div class="navbar-center hidden lg:flex">
-            <label class="input input-bordered flex items-center gap-1 rounded-full">
+        <div class="navbar-center">
+
+            <a class="btn btn-ghost text-xl"><img src="/image/logo1.png" class="w-9 ms-4" alt="">Judul</a>
+        </div>
+        <div class="navbar-end">
+
+            <div class="navbar-center hidden lg:flex">
+            <label class="input input-bordered flex items-center gap-1 rounded-full me-4">
                 <input type="text" class="grow" placeholder="Search" />
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-20 opacity-70">
                     <path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" />
                 </svg>
             </label>
         </div>
-        <div class="navbar-end m">
             <a href="Login" class="text-gray-300 hover:text-white px-1 py-2 rounded-md text-sm font-medium">
                 <button class="btn btn-outline btn-neutral"><i class="fas fa-sign-in-alt"></i>
                     Login</button>
             </a>
             <a href="Register" class="me-1 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-               
                 <button class="btn btn-neutral"> <i class="fas fa-user-plus"></i>
                     Daftar</button>
             </a>
-
         </div>
     </div>
     <hr>
-    <nav class="py-1">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-center">
-      <div class="flex">
-        <a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">Home</a>
-        <a href="AboutUs" class="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">Tentang Kami</a>
-        <a href="#" class="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">Pelayanan</a>
-        <a href="Blog" class="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-bold">Blog</a>
-      </div>
-
-    </div>
-  </div>
-</nav>
-
-    
-
-
     <div>
         @yield('main')
     </div>

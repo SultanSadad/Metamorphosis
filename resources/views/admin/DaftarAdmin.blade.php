@@ -48,6 +48,7 @@
                   <div class="inline-flex items-center gap-x-3">
                     <span>#3067</span>
                   </div>
+          
                 </td>
                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">admin</td>
                 <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
