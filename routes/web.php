@@ -16,9 +16,9 @@ use App\Http\Controllers\adminController;
 |
 */
 
-Route::get('/', function () {
-  return view('welcome');
- });
+// Route::get('/', function () {
+//   return view('welcome');
+//  });
 
 
  // customer
