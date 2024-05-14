@@ -26,14 +26,14 @@
                 </div>
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                     <li><a href="index">Shop</a></li>
-                    <li><a href="AboutUs">Tentang Kami</a></li>
+                    <li><a href="/guest/AboutUs">Tentang Kami</a></li>
                     <li><a>Kebijakan Privasi</a></li>
                 </ul>
             </div>
         </div>
         <div class="navbar-center">
-            <img src="/image/logo1.png" class="w-9 ms-4" alt="">
-            <a class="btn btn-ghost text-xl">Metamorphosis</a>
+
+            <a class="btn btn-ghost text-xl"><img src="/image/logo1.png" class="w-9 ms-4" alt="">Judul</a>
         </div>
         <div class="navbar-end">
 

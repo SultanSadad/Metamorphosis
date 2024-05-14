@@ -6,12 +6,37 @@ use Illuminate\Http\Request;
 
 class webController extends Controller
 {
+    public function Login()
+    {
+        return view('guest/Login',[
+            "title" => "Login"
+        ]);
+    }
+    public function Register()
+    {
+        return view('guest/Register',[
+            "title" => "Register"
+        ]);
+    }
+    public function Profile()
+    {
+        return view('guest/Profile',[
+            "title" => "Profile"
+        ]);
+    }
+    public function AboutUs()
+    {
+        return view('guest/AboutUs',[
+            "title" => "About Us"
+        ]);
+    }
     public function index()
     {
-        return view('index',[
+        return view('guest/index',[
             "title" => "index"
         ]);
     }
+   
     public function AdminDashboard()
     {
         return view('AdminDashboard',[
@@ -36,12 +61,7 @@ class webController extends Controller
             "title" => "Keranjang"
         ]);
     }
-    public function Profile()
-    {
-        return view('Profile',[
-            "title" => "Profile"
-        ]);
-    }
+ 
     public function Role()
     {
         return view('Role',[
@@ -50,7 +70,7 @@ class webController extends Controller
     }
     public function DetailBarang()
     {
-        return view('DetailBarang',[
+        return view('guest/DetailBarang',[
             "title" => "DetailBarang"
         ]);
     }

@@ -38,7 +38,7 @@
 
     <!-- item 1 -->
     <div id="1" class="cursor-pointer transition-transform duration-400 transform hover:scale-105 border border-gray-300 rounded p-4">
-      <img src="image/item/nikedunkop.png" class="mb-5" alt="">
+      <img src="/image/item/nikedunkop.png" class="mb-5" alt="">
       <span class="font-bold text-1xl">Rp650.000</span>
       <div>43</div>
       <div>Nike Dunk X OP</div>
@@ -54,7 +54,7 @@
     </script>
     <!-- item 2 -->
     <div id="2" class="cursor-pointer transition-transform duration-400 transform hover:scale-105 border border-gray-300 rounded p-4">
-      <img src="image/item/vansk8.png" class="mb-5" alt="">
+      <img src="/image/item/vansk8.png" class="mb-5" alt="">
       <span class="font-bold text-1xl">Rp500.000</span>
       <div>41</div>
       <div>Vans SK8 Low</div>
@@ -70,21 +70,21 @@
     </script>
     <!-- item 3 -->
     <div id="2" class="cursor-pointer transition-transform duration-400 transform hover:scale-105 border border-gray-300 rounded p-4">
-      <img src="image/item/vanslowblue.png" class="mb-5" alt="">
+      <img src="/image/item/vanslowblue.png" class="mb-5" alt="">
       <span class="font-bold text-1xl">Rp500.000</span>
       <div>41</div>
       <div>Vans Oldskol Blue </div>
     </div>
     <!-- item 4 -->
     <div id="2" class="cursor-pointer transition-transform duration-400 transform hover:scale-105 border border-gray-300 rounded p-4">
-      <img src="image/item/samba.png" class="mb-5" alt="">
+      <img src="/image/item/samba.png" class="mb-5" alt="">
       <span class="font-bold text-1xl">Rp800.000</span>
       <div>43</div>
       <div>Adidas Samba </div>
     </div>
     <!-- item 5 -->
     <div id="2" class="cursor-pointer transition-transform duration-400 transform hover:scale-105 border border-gray-300 rounded p-4">
-      <img src="image/item/converse.png" class="mb-5" alt="">
+      <img src="/image/item/converse.png" class="mb-5" alt="">
       <span class="font-bold text-1xl">Rp250.000</span>
       <div><span class="font-inter">39</span></div>
       <div>Converse Low</div>
@@ -92,31 +92,31 @@
   </div>
   <div class="mt-10 grid grid-cols-5 gap-12 place-items-start ...">
     <div id="2" class="cursor-pointer transition-transform duration-400 transform hover:scale-105 border border-gray-300 rounded p-4">
-      <img src="image/item/ctlow.png" class="mb-5" alt="">
+      <img src="/image/item/ctlow.png" class="mb-5" alt="">
       <span class="font-bold text-1xl">Rp500.000</span>
       <div>41</div>
       <div>Converse Chuck Low</div>
     </div>
     <div id="2" class="cursor-pointer transition-transform duration-400 transform hover:scale-105 border border-gray-300 rounded p-4">
-      <img src="image/item/onit.png" class="mb-5" alt="">
+      <img src="/image/item/onit.png" class="mb-5" alt="">
       <span class="font-bold text-1xl">Rp800.000</span>
       <div>41</div>
       <div>Onitsuka</div>
     </div>
     <div id="2" class="cursor-pointer transition-transform duration-400 transform hover:scale-105 border border-gray-300 rounded p-4">
-      <img src="image/item/sk8.png" class="mb-5" alt="">
+      <img src="/image/item/sk8.png" class="mb-5" alt="">
       <span class="font-bold text-1xl">Rp250.000</span>
       <div>43</div>
       <div>Vans sK8 High</div>
     </div>
     <div id="2" class="cursor-pointer transition-transform duration-400 transform hover:scale-105 border border-gray-300 rounded p-4">
-      <img src="image/item/dunk.png" class="mb-5" alt="">
+      <img src="/image/item/dunk.png" class="mb-5" alt="">
       <span class="font-bold text-1xl">Rp600.000</span>
       <div>42</div>
       <div>Nike Dunk Army Low</div>
     </div>
     <div id="2" class="cursor-pointer transition-transform duration-400 transform hover:scale-105 border border-gray-300 rounded p-4">
-      <img src="image/item/assics.png" class="mb-5" alt="">
+      <img src="/image/item/assics.png" class="mb-5" alt="">
       <span class="font-bold text-1xl">Rp800.000</span>
       <div>39</div>
       <div>Assics</div>
@@ -124,34 +124,34 @@
   </div>
   <div class="mt-10 grid grid-cols-5 gap-12 place-items-start ...">
     <div id="2" class="cursor-pointer transition-transform duration-400 transform hover:scale-105 border border-gray-300 rounded p-4">
-      <img src="image/item/onestar.png" class="mb-5" alt="">
+      <img src="/image/item/onestar.png" class="mb-5" alt="">
       <span class="font-bold text-1xl">Rp500.000</span>
       <div>42</div>
       <div>Converse One Star</div>
     </div>
     <div id="2" class="cursor-pointer transition-transform duration-400 transform hover:scale-105 border border-gray-300 rounded p-4">
-      <img src="image/item/spezial.png" class="mb-5" alt="">
+      <img src="/image/item/spezial.png" class="mb-5" alt="">
       <span class="font-bold text-1xl">R950.000</span>
       <div>40</div>
       <div>Adidas Spezial</div>
     </div>
 
     <div id="2" class="cursor-pointer transition-transform duration-400 transform hover:scale-105 border border-gray-300 rounded p-4">
-      <img src="image/item/onit1.png" class="mb-5" alt="">
+      <img src="/image/item/onit1.png" class="mb-5" alt="">
       <span class="font-bold text-1xl">Rp900.000</span>
       <div>41</div>
       <div>Onitsuka Tiger</div>
     </div>
 
     <div id="2" class="cursor-pointer transition-transform duration-400 transform hover:scale-105 border border-gray-300 rounded p-4">
-      <img src="image/item/newbalance.png" class="mb-5" alt="">
+      <img src="/image/item/newbalance.png" class="mb-5" alt="">
       <span class="font-bold text-1xl">Rp800.000</span>
       <div>43</div>
       <div>New Balance</div>
     </div>
 
     <div id="2" class="cursor-pointer transition-transform duration-400 transform hover:scale-105 border border-gray-300 rounded p-4">
-      <img src="image/item/ultra.png" class="mb-5" alt="">
+      <img src="/image/item/ultra.png" class="mb-5" alt="">
       <span class="font-bold text-1xl">Rp800.000</span>
       <div>41</div>
       <div>Adidas Ultraboost</div>

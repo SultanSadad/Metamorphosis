@@ -7,18 +7,18 @@
             <div class="grid gap-4">
                 <div class="flex gap-4 grid-cols-3 mt-7">
                     <div>
-                        <img class="w-72 h-72  rounded-lg" src="image/tes/2.jpeg" alt="">
+                        <img class="w-72 h-72  rounded-lg" src="/image/tes/2.jpeg" alt="">
                     </div>
                     <div>
-                        <img class="w-72 h-72  rounded-lg" src="image/tes/1.jpeg" alt="">
+                        <img class="w-72 h-72  rounded-lg" src="/image/tes/1.jpeg" alt="">
                     </div>
                 </div>
                 <div class="flex gap-4 grid-cols-3 ">
                     <div>
-                        <img class="w-72 h-72 rounded-lg" src="image/tes/3.jpeg" alt="">
+                        <img class="w-72 h-72 rounded-lg" src="/image/tes/3.jpeg" alt="">
                     </div>
                     <div>
-                        <img class="w-72 h-72  rounded-lg" src="image/tes/4.jpeg" alt="">
+                        <img class="w-72 h-72  rounded-lg" src="/image/tes/4.jpeg" alt="">
                     </div>
                 </div>
             </div>
