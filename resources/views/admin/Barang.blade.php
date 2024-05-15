@@ -27,7 +27,7 @@
             <p class="mt-1 font-bold">Foto Barang</p>
             <label for="file-upload" class="flex items-center justify-center w-full mt-1 mb-5 px-1  py-1 bg-white text-black rounded-lg border border-gray-300 cursor-pointer hover:bg-blue-500 hover:text-white">
             <span>Upload Foto</span>
-            <input id="file-upload" type="file" name="foto" class="hidden" />
+            <input type="file" name="foto" class="form-control" />
             </label>
 
             <div class="flex justify-end">
@@ -75,7 +75,7 @@
                     <span class="font-bold">{{ $b->nama }}</span>
                     <br/>
                 </td>
-                <td class="font-bold">{{ $b->harga }}</td>
+                <td class="font-bold">Rp.{{ $b->harga }}</td>
                 <td class="text-success">{{ $b->status }}</td>
                 <th>
                     <!-- You can open the modal using ID.showModal() method -->

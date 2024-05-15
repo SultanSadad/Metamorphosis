@@ -16,45 +16,53 @@
 <!-- Header -->
 
 <body>
-    <div class="navbar bg-base-100">
-        <div class="navbar-start">
-            <div class="dropdown">
-                <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
-                    </svg>
-                </div>
-                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><a href="index">Shop</a></li>
-                    <li><a href="/guest/AboutUs">Tentang Kami</a></li>
-                    <li><a>Kebijakan Privasi</a></li>
-                </ul>
-            </div>
+<div class="navbar bg-base-300 h-12 py-0 fixed top-0 w-full z-50">
+  <div class="container mx-auto">
+    <div class="navbar-start">
+      <div class="dropdown">
+        <div tabindex="0" role="button" class="btn btn-ghost lg:hidden p-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"/>
+          </svg>
         </div>
-        <div class="navbar-center">
-
-            <a class="btn btn-ghost text-xl"><img src="/image/logo1.png" class="w-9 ms-4" alt="">Judul</a>
-        </div>
-        <div class="navbar-end">
-
-            <div class="navbar-center hidden lg:flex">
-            <label class="input input-bordered flex items-center gap-1 rounded-full me-4">
-                <input type="text" class="grow" placeholder="Search" />
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-20 opacity-70">
-                    <path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" />
-                </svg>
-            </label>
-        </div>
-            <a href="Login" class="text-gray-300 hover:text-white px-1 py-2 rounded-md text-sm font-medium">
-                <button class="btn btn-outline btn-neutral"><i class="fas fa-sign-in-alt"></i>
-                    Login</button>
-            </a>
-            <a href="Register" class="me-1 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                <button class="btn btn-neutral"> <i class="fas fa-user-plus"></i>
-                    Daftar</button>
-            </a>
-        </div>
+      </div>
     </div>
+    <div class="navbar-center hidden lg:flex gap-6">
+      <img src="/image/logo1.png" class="h-6 w-6 flex m" alt="" />
+      <a href="index" class="text-xs mt-1 font-arial">Belanja</a>
+      <a href="sadd" class="text-xs mt-1 font-arial">Tentang Kami</a>
+      <a href="sadd" class="text-xs mt-1 font-arial">Kebijakan Privasi</a>
+      <a href="sadd" class="text-xs mt-1 font-arial">Bantuan</a>
+      <a href="sadd" class="text-xs mt-1 font-arial">Kontak</a>
+      <!-- Open the modal using ID.showModal() method -->
+      <button class="" onclick="my_modal_2.showModal()">
+        <i class="fas fa-search search-icon"></i>
+      </button>
+      <dialog id="my_modal_2" class="modal">
+        <div class="modal-box">
+          <input type="text" placeholder="You can't touch this" class="ms-14 input input-bordered border-full w-full max-w-xs"/>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
+      <a href=""></a>
+    </div>
+    <div class="navbar-end flex gap-4 text-xs">
+      <script>
+        // Get the current pathname
+        const pathname = window.location.pathname;
+        if (pathname === '/guest/index' || pathname === '/guest/indexguest') {
+            document.write('<button class="btn btn-ghost" onclick="location.href=\'Login\'"><i class="fas fa-sign-out-alt"></i> Logout</button>');
+        } else if (pathname === '/') {
+            document.write('<a href="/guest/Login">Login</a>');
+          document.write('<a href="/guest/Register" class="underline">Register</a>');
+        }
+      </script>
+    </div>
+  </div>
+</div>
+
     <hr>
     <div>
         @yield('main')

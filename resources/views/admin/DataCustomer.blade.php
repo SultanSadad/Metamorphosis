@@ -47,29 +47,30 @@
 
                             </tr>
                         </thead>
+                        @foreach ($users as $u)
                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                             <tr>
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                                     <div class="inline-flex items-center gap-x-3">
-                                        <span>#3066</span>
+                                        <span>#{{ $u->id }}</span>
                                     </div>
                                 </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">Sultan Sadad</td>
+                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ $u->name }}</td>
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                     <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                        <h2 class="text-sml">sultansadad@gmail.com</h2>
+                                        <h2 class="text-sml">{{ $u->email }}</h2>
                                     </div>
                                 </td>
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                              
             
                                         <div>
-                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white ">081275680949</h2>
+                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white ">{{ $u->NoHP }}</h2>
             
                                         </div>
                     
                                 </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">Batam Centre</td>
+                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ $u->alamat }}</td>
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">23 November 2004</td>
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">Laki-Laki</td>
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
@@ -89,6 +90,7 @@
                                 </td>
 
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

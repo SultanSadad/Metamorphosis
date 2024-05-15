@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Barang;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -32,8 +33,12 @@ class AdminController extends Controller
 
     public function DataCustomer()
     {
+        // Mengambil pengguna yang memiliki role 'admin'
+        $users = User::where('role', 'pembeli')->get();
+
         return view('admin/DataCustomer', [
-            "title" => "Data Customer"
+            'users' => $users,
+            'title' => 'Data Customer'
         ]);
     }
 
@@ -44,10 +49,14 @@ class AdminController extends Controller
         ]);
     }
 
-    public function DaftarAdmin()
+    public function daftarAdmin()
     {
+        // Mengambil pengguna yang memiliki role 'admin'
+        $users = User::where('role', 'admin')->get();
+
         return view('admin/DaftarAdmin', [
-            "title" => "Data Admin"
+            'users' => $users,
+            'title' => 'Daftar Admin'
         ]);
     }
 
