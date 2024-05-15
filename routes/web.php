@@ -46,3 +46,8 @@ Route::get('admin/DataCustomer', [adminController::class, 'DataCustomer']);;
 Route::get('admin/DaftarBarang', [adminController::class, 'DaftarBarang']);;
 Route::get('admin/DaftarAdmin', [adminController::class, 'DaftarAdmin']);;
 Route::get('admin/Review', [adminController::class, 'Review']);;
+Route::post('admin/Barang', [adminController::class, 'Barang']);;
+Route::post('admin/store', [adminController::class, 'store']);;
+Route::get('admin/{id}/edit', [adminController::class, 'edit']);;
+Route::put('admin/{id}', [adminController::class, 'update']);;
+Route::delete('admin/{id}', [adminController::class, 'destroy']);;

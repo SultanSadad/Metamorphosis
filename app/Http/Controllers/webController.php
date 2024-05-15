@@ -32,8 +32,10 @@ class webController extends Controller
     }
     public function index()
     {
-        return view('guest/index',[
-            "title" => "index"
+        $barang = \App\Models\Barang::all();
+        return view('index',[
+            "title" => "index",
+            "barang" => $barang,
         ]);
     }
    
