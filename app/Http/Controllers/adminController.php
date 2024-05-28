@@ -68,29 +68,43 @@ class AdminController extends Controller
     }
 
     public function store(Request $request)
-    {
-        // Validasi file yang di-upload
-        $request->validate([
-            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+{
+    // Validate the request
+    $request->validate([
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // add other validation rules as needed
+    ]);
 
-        // Menangani upload file
-        if ($request->hasFile('foto')) {
-            $file = $request->file('foto');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('public/uploads', $filename);
+    // Create the Barang record
+    $data = Barang::create($request->except(['_token', 'submit', 'foto']));
 
-            // Menyimpan data Barang beserta path foto
-            Barang::create(array_merge(
-                $request->except(['_token', 'submit']),
-                ['foto' => $path]
-            ));
+    if ($request->hasFile('foto')) {
+        // Get the original file name
+        $originalName = $request->file('foto')->getClientOriginalName();
 
-            return redirect('/admin/Barang')->with('success', 'Barang berhasil ditambahkan.');
+        // Define the storage path
+        $destinationPath = public_path('image/fotobarang');
+
+        // Ensure the directory exists
+        if (!file_exists($destinationPath)) {
+            mkdir($destinationPath, 0777, true);
         }
 
-        return back()->withErrors('Upload file gagal.');
+        // Move the file
+        $request->file('foto')->move($destinationPath, $originalName);
+
+        // Check if the file was moved successfully
+        if (file_exists($destinationPath . '/' . $originalName)) {
+            // Save the file name in the database
+            $data->foto = $originalName;
+            $data->save();
+        } else {
+            return redirect()->back()->with('error', 'File upload failed');
+        }
     }
+
+    return redirect('/admin/Barang')->with('success', 'Data berhasil ditambahkan');
+}
 
     public function edit($id)
     {
@@ -99,32 +113,54 @@ class AdminController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $barang = Barang::find($id);
+{
+    // Validate the request
+    $request->validate([
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // add other validation rules as needed
+    ]);
 
-        // Validasi file yang di-upload
-        $request->validate([
-            'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+    // Find the Barang record
+    $barang = Barang::find($id);
 
-        // Menangani upload file jika ada file baru
-        if ($request->hasFile('foto')) {
-            $file = $request->file('foto');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('public/uploads', $filename);
+    // Update the attributes except for the file and some others
+    $barang->update($request->except(['_token', 'submit', 'foto']));
 
-            // Update data Barang beserta path foto baru
-            $barang->update(array_merge(
-                $request->except(['_token', 'submit']),
-                ['foto' => $path]
-            ));
-        } else {
-            // Update data Barang tanpa mengganti foto
-            $barang->update($request->except(['_token', 'submit']));
+    if ($request->hasFile('foto')) {
+        // Delete the old photo if it exists
+        if ($barang->foto && file_exists(public_path('image/fotobarang/' . $barang->foto))) {
+            unlink(public_path('image/fotobarang/' . $barang->foto));
         }
 
-        return redirect('/admin/Barang')->with('success', 'Barang berhasil diupdate.');
+        // Get the original file name
+        $originalName = $request->file('foto')->getClientOriginalName();
+
+        // Define the storage path
+        $destinationPath = public_path('image/fotobarang');
+
+        // Ensure the directory exists
+        if (!file_exists($destinationPath)) {
+            mkdir($destinationPath, 0777, true);
+        }
+
+        // Move the file
+        $request->file('foto')->move($destinationPath, $originalName);
+
+        // Check if the file was moved successfully
+        if (file_exists($destinationPath . '/' . $originalName)) {
+            // Save the file name in the database
+            $barang->foto = $originalName;
+        } else {
+            return redirect()->back()->with('error', 'File upload failed');
+        }
     }
+
+    // Save the updated record
+    $barang->save();
+
+    return redirect('/admin/Barang')->with('success', 'Data berhasil diperbarui');
+}
+
 
     public function destroy($id)
     {

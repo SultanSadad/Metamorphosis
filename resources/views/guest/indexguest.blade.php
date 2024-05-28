@@ -35,25 +35,16 @@
 <hr class="mt-5">
 <div class="container mx-auto mt-9">
   <div class="mt-10 grid grid-cols-5 gap-12 place-items-start ...">
-
-    <!-- item 1 -->
     @foreach ($barang as $b)
-    <div id="1" class="cursor-pointer transition-transform duration-400 transform hover:scale-105 border border-gray-300 rounded p-4">
-      <img src="{{ $b->foto }}" class="mb-5" alt="">
-      <span class="font-bold text-1xl">{{ $b->harga }}</span>
-      <div>{{ $b->ukuran }}</div>
-      <div>{{ $b->nama }}</div>
+    <div id="item-{{ $b->id }}" class="cursor-pointer transition-transform duration-400 transform hover:scale-105 border border-gray-300 rounded p-4">
+      <a href="{{ route('DetailBarang', $b->id) }}">
+        <img src="{{ asset('image/fotobarang/' . $b->foto) }}" class="mb-5" alt="">
+        <span class="font-bold text-1xl">{{ $b->harga }}</span>
+        <div>{{ $b->ukuran }}</div>
+        <div>{{ $b->nama }}</div>
+      </a>
     </div>
-
-    <script>
-      document.getElementById("1").addEventListener("click", function() {
-        this.classList.add("scale-105");
-        setTimeout(() => {
-          window.location.href = "halaman-tujuan.html";
-        }, 300);
-      });
-    </script>
-     @endforeach
+    @endforeach
   </div>
 </div>
 <div class="container mt-10 mx-auto flex flex-wrap justify-center ">
@@ -93,8 +84,4 @@
     </div>
   </a>
 </div>
-
-
-
-
 @endsection

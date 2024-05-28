@@ -1,113 +1,47 @@
 @extends('layout.main')
 @section('main')
-<div class="flex container mx-auto px-4">
-    <!-- Column 1: Gambar dan Deskripsi Barang -->
-    <div class="w-3/4 p-4">
-        <div class="grid grid-cols-1">
-            <div class="grid gap-4">
-                <div class="flex gap-4 grid-cols-3 mt-7">
-                    <div>
-                        <img class="w-72 h-72  rounded-lg" src="/image/tes/2.jpeg" alt="">
+<h1 class="text-center mt-28 font-semibold text-4xl">Detail Barang</h1>
+<div class="max-w-7xl mx-auto bg-white p-6 rounded-lg shadow-md mt-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Column 1: Image -->
+        <div class="flex justify-center">
+            <img src="{{ asset('image/fotobarang/' . $barang->foto) }}" alt="{{ $barang->nama }}" class="rounded-lg shadow-md w-full">
+        </div>
+        <!-- Column 2: Product Details -->
+        <div>
+            <h1 class="text-2xl font-bold mb-2">{{ $barang->nama }}</h1>
+            <p class="text-xl text-gray-700 font-semibold mb-4">Rp {{ number_format($barang->harga, 0, ',', '.') }}</p>
+            <div class="mb-4">
+                <button onclick="my_modal_1.showModal()" class="bg-black text-white px-6 py-2 rounded-lg shadow-md hover:bg-base-300 transition duration-300 mb-2">Beli sekarang</button>
+                <!-- Open the modal using ID.showModal() method -->
+                <dialog id="my_modal_1" class="modal">
+                    <div class="modal-box">
+                        <h3 class="font-bold text-lg">Hello!</h3>
+                        <p class="py-4">Press ESC key or click outside to close</p>
                     </div>
-                    <div>
-                        <img class="w-72 h-72  rounded-lg" src="/image/tes/1.jpeg" alt="">
-                    </div>
+                    <form method="dialog" class="modal-backdrop">
+                        <button>close</button>
+                    </form>
+                </dialog>
+                <button class="bg-gray-200 text-black px-6 py-2 rounded-lg shadow-md ml-2 hover:bg-gray-300 transition duration-300">+ Keranjang</button>
+            </div>
+            <div class="grid grid-cols-2 gap-4 text-gray-600">
+                <div>
+                    <p class="py-2 border-b"><strong>Ukuran:</strong></p>
+                    <p class="py-2 border-b"><strong>Merek:</strong></p>
+                    <p class="py-2 border-b"><strong>Kondisi:</strong></p>
                 </div>
-                <div class="flex gap-4 grid-cols-3 ">
-                    <div>
-                        <img class="w-72 h-72 rounded-lg" src="/image/tes/3.jpeg" alt="">
-                    </div>
-                    <div>
-                        <img class="w-72 h-72  rounded-lg" src="/image/tes/4.jpeg" alt="">
-                    </div>
+                <div>
+                    <p class="py-2 border-b">{{ $barang->ukuran }}</p>
+                    <p class="py-2 border-b font-semibold">{{ $barang->merek }}</p>
+                    <p class="py-2 border-b">{{ $barang->kondisi }}</p>
                 </div>
             </div>
+            <div class="mt-4 p-4 bg-gray-100 rounded-lg">
+                <p class="text-gray-600"><strong>Description:</strong>{{ $barang->deskripsi }}</p>
+                <p class="text-gray-600 mt-14 underline ">Silakan cek ukuran terlebih dahulu, Pembelian tidak bisa di cancel/refund.</p>
+            </div>
         </div>
-        <hr class="mt-7">
-        <h2 class="text-2xl font-semibold mt-4 mb-4" i>Detail Barang</h2>
-        <div class="overflow-x-auto">
-            <table class="table-auto w-full">
-                <tbody>
-                    <tr>
-                        <td class="pr-4 font-medium">Barang</td>
-                        <td></td>
-                        <td class="text-lg">Vans Old Skol</td>
-                    </tr>
-                    <tr>
-                        <td class="pr-4 font-medium">Harga</td>
-                        <td></td>
-                        <td class="f text-lg">Rp500.000</td>
-                    </tr>
-                    <tr>
-                        <td class="pr-4 font-medium">Merk</td>
-                        <td></td>
-                        <td class=" text-lg">Vans</td>
-                    </tr>
-                    <tr>
-                        <td class="pr-4 font-medium">Kondisi</td>
-                        <td></td>
-                        <td class="text-lg">9/10</td>
-                    </tr>
-                    <tr>
-                        <td class="pr-16 font-medium">Deskripsi</td>
-                        <td></td>
-                        <td class="text-lg text-justify font-sans">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quia aut laborum quas sit, a, culpa provident reiciendis nam, autem placeat deserunt eligendi? Placeat fugit molestiae, eum quod possimus atque</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <!-- Column 2: Pembayaran -->
-    <div class="w-1/2 mt-12 ms-20">
-        <div class="p-6 border rounded-lg">
-            <h3 class="text-2xl font-medium mb-5 text-center mx-auto">Ringkasan Pembayaran</h3>
-            <table class="table-auto w-full">
-                <!-- head -->
-                <tr>
-                    <td class="px-4 py-2">Harga</td>
-                    <th class="px-4 py-2 text-right">Rp500.000</th>
-                </tr>
-                <tr>
-                    <td class="px-4 py-2">Ongkos Kirim</td>
-                    <th class="px-4 py-2 text-right">Rp30.000</th>
-                </tr>
-                <tr>
-                    <td class="px-4 py-2 ">Total</td>
-                    <th class="px-4 py-2 text-right">Rp530.000</th>
-                </tr>
-            </table>
-
-            <!-- Open the modal using ID.showModal() method -->
-            <button class="btn bg-black text-white w-full mt-4 mx-auto mb-4" onclick="my_modal_1.showModal()"> Bayar</button>
-            <dialog id="my_modal_1" class="modal">
-                <div class="modal-box">
-                    <h3 class="font-bold text-xl text-center mb-5">Bayar</h3>
-                    <h2 class=" mb-1">Nama Penerima</h2>
-                    <input type="text"  class="input input-bordered w-full rounded-lg" />
-                    <h2 class="font-medium mb-1 mt-3">Alamat</h2>
-                    <input type="text"  class="input input-bordered w-full rounded-lg" />
-                    <h2 class=" mb-1 mt-3">No Handphone</h2>
-                    <input type="text" class="input input-bordered w-full rounded-lg" />
-                    <h2 class=" mb-1 mt-3">Metode</h2>
-                    <select class="select select-bordered rounded-sm w-full">
-                        <option disabled selected>Pilih Metode</option>
-                        <option>Transfer</option>
-                        <option>COD</option>
-                    </select>
-                    <h2 class="font-medium mt-3 mb-1">Upload Bukti Transfer</h2>
-                    <input type="file" class="file-input file-input-bordered w-full rounded-sm" />
-                    <div class="flex justify-end mt-5">
-                        <form method="dialog">
-                            <button class=" btn btn-sm btn-error text-white w-xs right-2 top-2">Batal</button>
-                        </form>
-                        <button class="ms-2 btn btn-sm btn-success text-white w-xs right-2 top-2">Bayar</button>
-                    </div>
-                </div>
-        </div>
-        </dialog>
     </div>
 </div>
-
-
-
 @endsection

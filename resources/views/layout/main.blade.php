@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{ $title }}</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
@@ -16,39 +16,51 @@
 <!-- Header -->
 
 <body>
-<div class="navbar bg-base-300 h-12 py-0 fixed top-0 w-full z-50">
-  <div class="container mx-auto">
-    <div class="navbar-start">
-      <div class="dropdown">
-        <div tabindex="0" role="button" class="btn btn-ghost lg:hidden p-1">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"/>
-          </svg>
-        </div>
-      </div>
-    </div>
-    <div class="navbar-center hidden lg:flex gap-6">
-      <img src="/image/logo1.png" class="h-6 w-6 flex m" alt="" />
-      <a href="index" class="text-xs mt-1 font-arial">Belanja</a>
-      <a href="sadd" class="text-xs mt-1 font-arial">Tentang Kami</a>
-      <a href="sadd" class="text-xs mt-1 font-arial">Kebijakan Privasi</a>
-      <a href="sadd" class="text-xs mt-1 font-arial">Bantuan</a>
-      <a href="sadd" class="text-xs mt-1 font-arial">Kontak</a>
-      <!-- Open the modal using ID.showModal() method -->
-      <button class="" onclick="my_modal_2.showModal()">
-        <i class="fas fa-search search-icon"></i>
-      </button>
-      <dialog id="my_modal_2" class="modal">
-        <div class="modal-box">
-          <input type="text" placeholder="You can't touch this" class="ms-14 input input-bordered border-full w-full max-w-xs"/>
-        </div>
-        <form method="dialog" class="modal-backdrop">
-          <button>close</button>
-        </form>
-      </dialog>
-      <a href=""></a>
-    </div>
-    <div class="navbar-end flex gap-4 text-xs">
+<div class="navbar bg-base-300 h-12  fixed top-0 w-full z-50">
+        <div class="container mx-auto">
+          <div class="navbar-start">
+            <button class="btn btn-ghost ms-4 font-arial text-"> <img src="/image/logo1.png" class="h-6 w-6" alt="" />Metamorphosis</button>
+
+            <div class="dropdown">
+              <div tabindex="0" role="button" class="btn btn-ghost lg:hidden p-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+    
+          <div class="navbar-center hidden lg:flex gap-14">
+            <a href="indexguest" class="text-xs mt-1 font-arial">Belanja </a>
+            <a href="AboutUs" class="text-xs mt-1 font-arial">Tentang Kami</a>
+            <a href="Privacy  " class="text-xs mt-1 font-arial">Kebijakan Privasi</a>
+            <a href="Profile" class="text-xs mt-1 font-arial">Bantuan</a>
+            <a href="Bantuan" class="text-xs mt-1 font-arial">Hubungin Kami</a>
+            <!-- Open the modal using ID.showModal() method -->
+            <button class="" onclick="my_modal_2.showModal()">
+              <i class="fas fa-search search-icon"></i>
+            </button>
+            <dialog id="my_modal_2" class="modal">
+              <div class="modal-box">
+                <input type="text" placeholder="Cari barang disini"  class="ms-14 input input-bordered  border-full w-full max-w-xs"/>
+              </div>
+              <form method="dialog" class="modal-backdrop">
+                <button>close</button>
+              </form>
+            </dialog>
+          </div>
+          <div class="navbar-end flex gap-4 text-xs">
       <script>
         // Get the current pathname
         const pathname = window.location.pathname;
@@ -59,9 +71,10 @@
           document.write('<a href="/guest/Register" class="underline">Register</a>');
         }
       </script>
-    </div>
-  </div>
-</div>
+    </div>
+        </div>
+      </div>
+      
 
     <hr>
     <div>

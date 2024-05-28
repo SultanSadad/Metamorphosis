@@ -31,12 +31,14 @@ Route::get('guest/indexguest', [webController::class, 'indexguest']);
 Route::get('status', [webController::class, 'status']);
 Route::get('Notifikasi', [webController::class, 'Notifikasi']);
 Route::get('Keranjang', [webController::class, 'Keranjang']);
-Route::get('guest/DetailBarang', [webController::class, 'DetailBarang']);
+Route::get('/DetailBarang/{id}', [webController::class, 'DetailBarang'])->name('DetailBarang');
 Route::get('Konfirmasi', [webController::class, 'Konfirmasi']);
 Route::get('/', [webController::class, 'index']);
 Route::post('guest/Login', [webController::class, 'Autentikasi']);
 Route::post('guest/Login', [webController::class, 'Autentikasi'])->name('login');
 Route::get('/guest/index', [webController::class, 'index']);
+Route::get('/guest/Bantuan', [webController::class, 'Bantuan']);
+Route::get('/guest/Keranjang', [webController::class, 'Keranjang']);
 
 
 

@@ -40,7 +40,7 @@
     <!-- item 1 -->
     @foreach ($barang as $b)
     <div id="1" class="cursor-pointer transition-transform duration-400 transform hover:scale-105">
-      <img src="{{ $b->foto }}" class="mb-5" alt="">
+      <img src="{{ asset('image/fotobarang/' . $b->foto) }}" class="mb-5" alt="">
       <span class="font-bold text-1xl">{{ $b->harga }}</span>
       <div>{{ $b->ukuran }}</div>
       <div>{{ $b->nama }}</div>

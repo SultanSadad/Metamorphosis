@@ -20,6 +20,13 @@ class webController extends Controller
             "barang" => $barang,
         ]);
     }
+    public function Bantuan()
+    {
+        $barang = Barang::all();
+        return view('guest/Bantuan', [
+            "title" => "index",
+        ]);
+    }
 
     // Menampilkan halaman dashboard admin
     public function AdminDashboard()
@@ -48,18 +55,24 @@ class webController extends Controller
     // Menampilkan halaman keranjang
     public function Keranjang()
     {
-        return view('Keranjang', [
-            "title" => "Keranjang"
+        $barang = Barang::all();
+        return view('guest/Keranjang', [
+            "title" => "Keranjang",
+            "barang" => $barang,
         ]);
     }
 
     // Menampilkan halaman profil untuk guest
-    public function Profile()
-    {
-        return view('guest/Profile', [
-            "title" => "Profile"
-        ]);
-    }
+
+public function Profile()
+{
+    $user = Auth::user();
+    return view('guest/Profile', [
+        "title" => "Profile",
+        "user" => $user
+    ]);
+}
+
 
     // Menampilkan halaman role
     public function Role()
@@ -70,12 +83,15 @@ class webController extends Controller
     }
 
     // Menampilkan halaman detail barang untuk guest
-    public function DetailBarang()
-    {
-        return view('guest/DetailBarang', [
-            "title" => "DetailBarang"
-        ]);
-    }
+    public function DetailBarang($id)
+{
+    $barang = Barang::find($id);
+    return view('guest/DetailBarang', [
+        "title" => "DetailBarang",
+        "barang" => $barang
+    ]);
+}
+
 
     // Menampilkan halaman login
     public function Login()

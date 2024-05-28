@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('barang', function (Blueprint $table) {
             $table->id();
-            $table->longblob('foto')->nullable();
+            $table->string('foto')->nullable();
             $table->string('nama')->nullable();
             $table->string('harga')->nullable();
             $table->string('status')->nullable();
