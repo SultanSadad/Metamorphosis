@@ -39,6 +39,7 @@ Route::post('guest/Login', [webController::class, 'Autentikasi'])->name('login')
 Route::get('/guest/index', [webController::class, 'index']);
 Route::get('/guest/Bantuan', [webController::class, 'Bantuan']);
 Route::get('/guest/Keranjang', [webController::class, 'Keranjang']);
+Route::post('/guest/pesan', [webController::class, 'pesan']);
 
 
 

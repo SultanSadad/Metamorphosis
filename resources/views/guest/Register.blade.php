@@ -43,6 +43,19 @@
           <input type="password" id="confirm-password" name="confirm-password" class="border border-gray-300 rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
           <div id="confirm-password-error" class="text-red-500 text-sm"></div>
         </div>
+        <div class="mb-2">
+          <label for="gender" class="text-black">Gender</label>
+          <select id="gender" name="gender" class="border border-gray-300 rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <option value="" selected>Pilih Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="mb-2">
+          <label for="birthdate" class="text-black">Birthdate</label>
+          <input type="date" id="birthdate" name="birthdate" class="border border-gray-300 rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
         <div class="flex justify-center items-center mb-8 mt-5">
           <button type="submit" name="submit" class="bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 px-44 rounded focus:outline-none focus:shadow-outline">Registrasi</button>
         </div>

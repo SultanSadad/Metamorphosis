@@ -22,7 +22,7 @@ class DummyUsersSeeder extends Seeder
 
             ],
             [
-                'name'=>'Verstappen Pembeli',
+                'name'=>'Max Verstappen',
                 'email'=>'pembeli@gmail.com',
                 'role'=>'pembeli',
                 'password'=>bcrypt('123456'),

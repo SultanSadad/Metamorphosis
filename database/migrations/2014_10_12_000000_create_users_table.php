@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->enum('role', ['admin', 'pembeli'])->default('pembeli');
             $table->string('alamat')->nullable();
             $table->string('NoHP')->nullable();
+            $table->string('gender')->nullable();    // menambahkan kolom gender
+            $table->date('birthdate')->nullable();    // menambahkan kolom birthdate
             $table->rememberToken();
             $table->timestamps();
         });

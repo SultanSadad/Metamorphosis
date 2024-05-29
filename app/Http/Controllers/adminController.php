@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Barang;
 use App\Models\User;
+use App\Models\Pesan;
 
 class AdminController extends Controller
 {
@@ -62,8 +63,10 @@ class AdminController extends Controller
 
     public function Review()
     {
+        $pesan = Pesan::all(); // Mengambil semua pesan dari database
         return view('admin/Review', [
-            "title" => "Review"
+            "title" => "Review",
+            "pesan" => $pesan // Mengirim data pesan ke view
         ]);
     }
 

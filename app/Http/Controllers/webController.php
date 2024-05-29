@@ -8,6 +8,7 @@ use App\Models\Barang; // Import model Barang
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use App\Models\Pesan;
 
 class webController extends Controller
 {
@@ -35,7 +36,12 @@ class webController extends Controller
             "title" => "Admin"
         ]);
     }
-
+    public function AboutUs()
+    {
+        return view('guest/AboutUs', [
+            "title" => "Tentang Kami"
+        ]);
+    }
     // Menampilkan halaman status
     public function status()
     {
@@ -146,36 +152,69 @@ public function Profile()
         }
     }
     public function create(Request $request)
-    {
-        Session::flash('name', $request->name);
-        Session::flash('email', $request->email);
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
-            'alamat' => 'required',
-            'NoHP' => 'required|min:8',
-        ], [
-            'name.required' => 'Nama wajib diisi',
-            'email.required' => 'Email tidak boleh kosong',
-            'email.email' => 'Silahkan masukkan email yang valid',
-            'email.unique' => 'Email sudah terdaftar',
-            'password.required' => 'Password tidak boleh kosong',
-            'password.min' => 'Jumlah password minimal 6 huruf',
-            'alamat.required' => 'Alamat wajib diisi',
-            'NoHP.required' => 'No HP wajib diisi',
-        ]);
+{
+    // Menyimpan input sementara ke dalam sesi
+    Session::flash('name', $request->name);
+    Session::flash('email', $request->email);
 
-        $data = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'alamat' => $request->alamat,
-            'NoHP' => $request->NoHP,
-        ];
-        User::create($data);
+    // Validasi input
+    $request->validate([
+        'name' => 'required',
+        'email' => 'required|email|unique:users',
+        'password' => 'required|min:6',
+        'alamat' => 'required',
+        'NoHP' => 'required|min:8',
+        'gender' => 'nullable|string|max:10', // Tambahkan validasi untuk gender
+        'birthdate' => 'nullable|date',       // Tambahkan validasi untuk birthdate
+    ], [
+        'name.required' => 'Nama wajib diisi',
+        'email.required' => 'Email tidak boleh kosong',
+        'email.email' => 'Silahkan masukkan email yang valid',
+        'email.unique' => 'Email sudah terdaftar',
+        'password.required' => 'Password tidak boleh kosong',
+        'password.min' => 'Jumlah password minimal 6 huruf',
+        'alamat.required' => 'Alamat wajib diisi',
+        'NoHP.required' => 'No HP wajib diisi',
+    ]);
 
-        return redirect()->route('login')->with('success', 'Register berhasil, silahkan login.');
-    }
+    // Menyimpan data ke dalam array
+    $data = [
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+        'alamat' => $request->alamat,
+        'NoHP' => $request->NoHP,
+        'gender' => $request->gender,    // Tambahkan gender ke array data
+        'birthdate' => $request->birthdate, // Tambahkan birthdate ke array data
+    ];
+
+    // Membuat user baru
+    User::create($data);
+
+    // Redirect ke halaman login dengan pesan sukses
+    return redirect()->route('login')->with('success', 'Register berhasil, silahkan login.');
 }
+public function pesan(Request $request)
+{
+    // Validasi input
+    $validatedData = $request->validate([
+        'nama' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255',
+        'HP' => 'required|string|max:20',
+        'pesan_saran' => 'required|string',
+    ]);
+
+    // Simpan data ke database
+    Pesan::create([
+        'nama' => $validatedData['nama'],
+        'email' => $validatedData['email'],
+        'HP' => $validatedData['HP'],
+        'pesan_saran' => $validatedData['pesan_saran'],
+    ]);
+
+    // Redirect atau kirim respon sukses
+    return redirect()->back()->with('success', 'Pesan Anda telah dikirim!');
+}
+}
+
 

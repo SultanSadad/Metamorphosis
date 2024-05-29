@@ -23,6 +23,8 @@ class User extends Authenticatable
         'role',
         'alamat',
         'NoHP',
+        'gender',    // tambahkan kolom gender
+        'birthdate', // tambahkan kolom birthdate
     ];
 
     /**
