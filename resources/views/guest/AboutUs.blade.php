@@ -7,7 +7,7 @@
             <h1 class="text-4xl font-bold text-gray-300 font-sans">Metamorphosis</h1>
             <span class="text-center text-gray-300 font-light">"Metamorphosis" adalah kelompok yang terdiri dari individu-individu kreatif dan bersemangat yang memiliki visi untuk mengubah persepsi tentang sepatu bekas. Dengan fokus pada merek-merek terkemuka seperti Nike, Adidas, Puma, dan lainnya, tim ini bertekad untuk menciptakan pengalaman daring yang unik dan menarik bagi para penggemar sepatu. Mereka tidak hanya ingin menjual produk, tetapi juga ingin menginspirasi dan membawa kesadaran akan keberlanjutan dan gaya hidup yang bertanggung jawab kepada pelanggan mereka.</span>
             <div class="flex">
-                <button class="btn btn-gray-900 btn-outline font-sans text-gray-300">Belanja Sekarang</button>
+            <button onclick="window.location.href='/guest/indexguest'" class="btn btn-gray-900 btn-outline font-sans text-gray-300">Belanja Sekarang</button>
             </div>
         </div>
     </div>

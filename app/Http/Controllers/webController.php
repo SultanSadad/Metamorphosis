@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Models\Pesan;
+use App\Models\Keranjang;
 
 class webController extends Controller
 {
@@ -18,6 +19,14 @@ class webController extends Controller
         $barang = Barang::all();
         return view('guest/index', [
             "title" => "index",
+            "barang" => $barang,
+        ]);
+    }
+    public function Welcome()
+    {
+        $barang = Barang::all();
+        return view('/', [
+            "title" => "Welcome",
             "barang" => $barang,
         ]);
     }
@@ -215,6 +224,62 @@ public function pesan(Request $request)
     // Redirect atau kirim respon sukses
     return redirect()->back()->with('success', 'Pesan Anda telah dikirim!');
 }
+public function addToKeranjang(Request $request)
+    {
+        // Validasi request
+        $request->validate([
+            'id_barang' => 'required|exists:barang,id',
+        ]);
+
+        // Dapatkan user yang sedang login
+        $user = Auth::user();
+
+        // Buat data keranjang baru
+        $keranjang = new Keranjang();
+        $keranjang->id_barang = $request->id_barang;
+        $keranjang->id_user = $user->id;
+        $keranjang->total_harga = $request->total_harga; // Misalnya ada harga total di request
+
+        // Simpan ke database
+        $keranjang->save();
+
+        // Redirect ke halaman sebelumnya dengan pesan sukses
+        return redirect()->back()->with('success', 'Barang berhasil ditambahkan ke keranjang.');
+    }
+    public function showKeranjang()
+{
+    // Dapatkan user yang sedang login
+    $user = Auth::user();
+    
+    // Ambil semua barang di keranjang user
+    $keranjang = Keranjang::where('id_user', $user->id)->with('barang')->get();
+
+    // Hitung total harga
+    $totalHarga = $keranjang->sum(function ($item) {
+        return $item->barang->harga;
+    });
+
+    // Definisikan variabel $title
+    $title = "Keranjang Belanja";
+
+    // Pastikan variabel $keranjang tersedia di view bersama dengan $title
+    return view('guest.Keranjang', compact('keranjang', 'totalHarga', 'title'));
+}
+
+    
+
+    public function hapusKeranjang(Request $request)
+    {
+        // Validasi request
+        $request->validate([
+            'id' => 'required|exists:keranjang,id',
+        ]);
+
+        // Hapus item dari keranjang
+        Keranjang::where('id', $request->id)->delete();
+
+        return redirect()->back()->with('success', 'Barang berhasil dihapus dari keranjang.');
+    }
 }
 
 

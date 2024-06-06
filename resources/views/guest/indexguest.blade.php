@@ -1,87 +1,26 @@
 @extends('layout.main')
 @section('main')
-<div class="container mx-auto">
-  <div class="carousel w-full">
-    <div id="slide1" class="carousel-item relative w-full">
-      <img src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg" class="w-full" />
-      <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-        <a href="#slide4" class="btn btn-circle">❮</a>
-        <a href="#slide2" class="btn btn-circle">❯</a>
-      </div>
+<div class="container mx-auto p-6 mt-14">
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <!-- Card 1 -->
+        @foreach ($barang as $b)
+        <div id="item-{{ $b->id }}">
+            <a href="{{ route('DetailBarang', $b->id) }}">
+                <div class="bg-white rounded-lg shadow-md p-12 transform transition-transform duration-200 ease-in-out hover:scale-105">
+                    <span class="text-xs bg-purple-200 text-purple-800 py-1 px-2 rounded-full">NEW</span>
+                    <img class="h-40 w-full object-cover mt-2" src="{{ asset('image/fotobarang/' . $b->foto) }}" alt="Product Image">
+                    <h2 class="text-lg font-semibold mt-2">{{ $b->nama }}</h2>
+                    <p class="mt-1 text-gray-600">{{ $b->harga }}</p>
+                    <div class="flex gap-2">
+                        <button class="mt-2 bg-neutral text-white py-2 px-3 rounded">Keranjang</button>
+                        <button class="mt-2 bg-primary text-white py-2 px-3 rounded">Beli</button>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- Card 2 -->
+        @endforeach
+        <!-- end card -->
     </div>
-    <div id="slide2" class="carousel-item relative w-full">
-      <img src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.jpg" class="w-full" />
-      <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-        <a href="#slide1" class="btn btn-circle">❮</a>
-        <a href="#slide3" class="btn btn-circle">❯</a>
-      </div>
-    </div>
-    <div id="slide3" class="carousel-item relative w-full">
-      <img src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.jpg" class="w-full" />
-      <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-        <a href="#slide2" class="btn btn-circle">❮</a>
-        <a href="#slide4" class="btn btn-circle">❯</a>
-      </div>
-    </div>
-    <div id="slide4" class="carousel-item relative w-full">
-      <img src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.jpg" class="w-full" />
-      <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-        <a href="#slide3" class="btn btn-circle">❮</a>
-        <a href="#slide1" class="btn btn-circle">❯</a>
-      </div>
-    </div>
-  </div>
-</div>
-<hr class="mt-5">
-<div class="container mx-auto mt-9">
-  <div class="mt-10 grid grid-cols-5 gap-12 place-items-start ...">
-    @foreach ($barang as $b)
-    <div id="item-{{ $b->id }}" class="cursor-pointer transition-transform duration-400 transform hover:scale-105 border border-gray-300 rounded p-4">
-      <a href="{{ route('DetailBarang', $b->id) }}">
-        <img src="{{ asset('image/fotobarang/' . $b->foto) }}" class="mb-5" alt="">
-        <span class="font-bold text-1xl">{{ $b->harga }}</span>
-        <div>{{ $b->ukuran }}</div>
-        <div>{{ $b->nama }}</div>
-      </a>
-    </div>
-    @endforeach
-  </div>
-</div>
-<div class="container mt-10 mx-auto flex flex-wrap justify-center ">
-  <a href="vans">
-    <div class="w-40 h-40 m-2 border flex items-center justify-center rounded hover:shadow-lg">
-      <img src="/image/brand/vans.png" class="w-24 h-24" alt="">
-    </div>
-  </a>
-  <a href="vans">
-    <div class="w-40 h-40 m-2 border flex items-center justify-center rounded hover:shadow-lg">
-      <img src="/image/brand/adidas.png" class="w-24 h-24" alt="">
-    </div>
-  </a>
-  <a href="vans">
-    <div class="w-40 h-40 m-2 border flex items-center justify-center rounded hover:shadow-lg">
-      <img src="/image/brand/nike.png" class="w-24 h-24" alt="">
-    </div>
-  </a>
-  <a href="vans">
-    <div class="w-40 h-40 m-2 border flex items-center justify-center rounded hover:shadow-lg">
-      <img src="/image/brand/nb.png" class="w-24 h-24" alt="">
-    </div>
-  </a>
-  <a href="vans">
-    <div class="w-40 h-40 m-2 border flex items-center justify-center rounded hover:shadow-lg">
-      <img src="/image/brand/converse.png" class="w-24 h-24" alt="">
-    </div>
-  </a>
-  <a href="vans">
-    <div class="w-40 h-40 m-2 border flex items-center justify-center rounded hover:shadow-lg">
-      <img src="/image/brand/puma.png" class="w-24 h-24" alt="">
-    </div>
-  </a>
-  <a href="vans">
-    <div class="w-40 h-40 m-2 border flex items-center justify-center rounded hover:shadow-lg">
-      <img src="/image/brand/onitsuka.png" class="w-24 h-24" alt="">
-    </div>
-  </a>
 </div>
 @endsection

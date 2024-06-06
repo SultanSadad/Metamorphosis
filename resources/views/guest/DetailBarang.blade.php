@@ -23,7 +23,12 @@
                         <button>close</button>
                     </form>
                 </dialog>
-                <button class="bg-gray-200 text-black px-6 py-2 rounded-lg shadow-md ml-2 hover:bg-gray-300 transition duration-300">+ Keranjang</button>
+                <form action="{{ route('keranjang.add') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="id_barang" value="{{ $barang->id }}">
+                    <input type="hidden" name="total_harga" value="{{ $barang->harga }}">
+                    <button type="submit" class="bg-gray-200 text-black px-6 py-2 rounded-lg shadow-md ml-2 hover:bg-gray-300 transition duration-300">+ Keranjang</button>
+                </form>
             </div>
             <div class="grid grid-cols-2 gap-4 text-gray-600">
                 <div>

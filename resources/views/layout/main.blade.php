@@ -16,95 +16,92 @@
 <!-- Header -->
 
 <body>
-<div class="navbar bg-base-300 h-12 fixed top-0 w-full z-50">
+<div class="navbar bg-base-300 h-9 fixed top-0 w-full z-50">
         <div class="container mx-auto">
-            <div class="navbar-start">
-                <button class="btn btn-ghost ms-4 font-arial">
-                    <img src="/image/logo1.png" class="h-6 w-6" alt="" />Metamorphosis
-                </button>
-
-                <div class="dropdown">
-                    <div tabindex="0" role="button" class="btn btn-ghost lg:hidden p-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
-                        </svg>
-                    </div>
-                </div>
+          <div class="navbar-start">
+            <button class="btn btn-ghost ms-4 font-arial">
+              <img src="/image/logo1.png" class="h-6 w-6" alt="" />Metamorphosis
+            </button>
+    
+            <div class="dropdown">
+              <div tabindex="0" role="button" class="btn btn-ghost lg:hidden p-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />
+                </svg>
+              </div>
             </div>
-
-            <div class="navbar-center hidden lg:flex gap-14">
-                <a href="/guest/indexguest" class="text-xs mt-1 font-arial">Belanja</a>
-                <a href="AboutUs" class="text-xs mt-1 font-arial">Tentang Kami</a>
-                <a href="Privacy" class="text-xs mt-1 font-arial">Kebijakan Privasi</a>
-                <a href="" class="text-xs mt-1 font-arial">Bantuan</a>
-                <a href="Bantuan" class="text-xs mt-1 font-arial">Hubungin Kami</a>
-                <button class="" onclick="my_modal_2.showModal()">
-                    <i class="fas fa-search search-icon"></i>
-                </button>
-                <dialog id="my_modal_2" class="modal">
-                    <div class="modal-box">
-                        <input type="text" placeholder="Cari barang disini" class="ms-14 input input-bordered border-full w-full max-w-xs" />
-                    </div>
-                    <form method="dialog" class="modal-backdrop">
-                        <button>close</button>
-                    </form>
-                </dialog>
+          </div>
+    
+          <div class="navbar-center hidden lg:flex gap-14">
+            <a href="/guest/indexguest" class="text-xs mt-1 font-arial">Belanja</a>
+            <a href="AboutUs" class="text-xs mt-1 font-arial">Tentang Kami</a>
+            <a href="Privacy" class="text-xs mt-1 font-arial">Kebijakan Privasi</a>
+            <a href="" class="text-xs mt-1 font-arial">Bantuan</a>
+            <a href="Bantuan" class="text-xs mt-1 font-arial">Hubungin Kami</a>
+            <button class="" onclick="my_modal_2.showModal()">
+              <i class="fas fa-search search-icon"></i>
+            </button>
+            <dialog id="my_modal_2" class="modal">
+              <div class="modal-box">
+                <input type="text" placeholder="Cari barang disini" class="ms-14 input input-bordered border-full w-full max-w-xs"/>
+              </div>
+              <form method="dialog" class="modal-backdrop">
+                <button >close</button>
+              </form>
+            </dialog>
+          </div>
+    
+          <div class="navbar-end flex items-center gap-4 text-lg">
+          <div class="flex gap-4">
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+            <div class="indicator">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+              <span class="badge badge-sm indicator-item">8</span>
             </div>
-
-            <div class="navbar-end flex items-center gap-4 text-lg">
-                <div class="flex gap-4">
-                    <div class="dropdown dropdown-end">
-                        <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-                            <div class="indicator">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                                <span class="badge badge-sm indicator-item">8</span>
-                            </div>
-                        </div>
-                        <div tabindex="0" class="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow">
-                            <div class="card-body">
-                                <span class="font-bold text-lg">8 Items</span>
-                                <span class="text-info">Subtotal: $999</span>
-                                <div class="card-actions">
-                                <button onclick="window.location.href='/guest/Keranjang'" class="btn btn-primary btn-block">View cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dropdown dropdown-end">
-                        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-                            <div class="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                            </div>
-                        </div>
-                        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                            <li>
-                                <a href="Profile" class="justify-between">
-                                    Profile
-                                    <span class="badge">New</span>
-                                </a>
-                            </li>
-                            <li><a>Settings</a></li>
-                            <li><a href="Login">Logout</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="navbar-end flex gap-4 text-xs">
-                    <script>
-                        // Get the current pathname
-                        const pathname = window.location.pathname;
-                        if (pathname === '/guest/index' || pathname === '/guest/indexguest') {
-                            document.write('<button class="btn btn-ghost" onclick="location.href=\'Login\'"><i class="fas fa-sign-out-alt"></i> Logout</button>');
-                        } else if (pathname === '/') {
-                            document.write('<a href="/guest/Login">Login</a>');
-                            document.write('<a href="/guest/Register" class="underline">Register</a>');
-                        }
-                    </script>
-                </div>
+          </div>
+          <div tabindex="0" class="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow">
+            <div class="card-body">
+              <span class="font-bold text-lg">8 Items</span>
+              <span class="text-info">Subtotal: $999</span>
+              <div class="card-actions">
+              <a href="/guest/Keranjang" class="btn btn-primary btn-block">View cart</a>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+            <div class="w-10 rounded-full">
+              <img alt="Tailwind CSS Navbar component" src="/image/profilez.jpeg" />
+            </div>
+          </div>
+          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+            <li>
+              <a href="/guest/Profile" class="justify-between">
+                Profile
+                <span class="badge">New</span>
+              </a>
+            </li>
+            <li><a>Settings</a></li>
+            <li><a href="/guest/Login">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+          </div>
+        </div>
+      </div>
 
     <hr>
     <div>
