@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Models\Pesan;
 use App\Models\Keranjang;
+use App\Models\Pembayaran;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+
 
 class webController extends Controller
 {
@@ -136,30 +140,33 @@ public function Profile()
 
     // Fungsi untuk autentikasi
     public function Autentikasi(Request $request)
-    {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required',
-        ], [
-            'email.required' => 'Email tidak boleh kosong',
-            'password.required' => 'Password tidak boleh kosong',
-        ]);
+{
+    $request->validate([
+        'email' => 'required',
+        'password' => 'required',
+    ], [
+        'email.required' => 'Email tidak boleh kosong',
+        'password.required' => 'Password tidak boleh kosong',
+    ]);
 
-        $infologin = [
-            'email' => $request->email,
-            'password' => $request->password,
-        ];
+    $infologin = [
+        'email' => $request->email,
+        'password' => $request->password,
+    ];
 
-        if (Auth::attempt($infologin)) {
-            if (auth::user()->role == 'admin') {
-                return redirect('/admin/Barang');
-            } elseif (auth::user()->role == 'pembeli') {
-                return redirect('/guest/indexguest');
-            }
-        } else {
-            return redirect()->route('login')->withErrors('Username dan password yang dimasukkan salah')->withInput();
+    if (Auth::attempt($infologin)) {
+        if (auth::user()->role == 'admin') {
+            return redirect('/admin/Barang');
+        } elseif (auth::user()->role == 'pembeli') {
+            return redirect('/guest/indexguest');
         }
+    } else {
+        return redirect()->route('login')->with([
+            'error' => 'Username dan password yang dimasukkan salah',
+            'showModal' => true
+        ])->withInput();
     }
+}
     public function create(Request $request)
 {
     // Menyimpan input sementara ke dalam sesi
@@ -225,60 +232,111 @@ public function pesan(Request $request)
     return redirect()->back()->with('success', 'Pesan Anda telah dikirim!');
 }
 public function addToKeranjang(Request $request)
-    {
-        // Validasi request
-        $request->validate([
-            'id_barang' => 'required|exists:barang,id',
-        ]);
-
-        // Dapatkan user yang sedang login
-        $user = Auth::user();
-
-        // Buat data keranjang baru
-        $keranjang = new Keranjang();
-        $keranjang->id_barang = $request->id_barang;
-        $keranjang->id_user = $user->id;
-        $keranjang->total_harga = $request->total_harga; // Misalnya ada harga total di request
-
-        // Simpan ke database
-        $keranjang->save();
-
-        // Redirect ke halaman sebelumnya dengan pesan sukses
-        return redirect()->back()->with('success', 'Barang berhasil ditambahkan ke keranjang.');
-    }
-    public function showKeranjang()
 {
+    // Validasi request
+    $request->validate([
+        'id_barang' => 'required|exists:barang,id',
+    ]);
+
     // Dapatkan user yang sedang login
     $user = Auth::user();
-    
-    // Ambil semua barang di keranjang user
-    $keranjang = Keranjang::where('id_user', $user->id)->with('barang')->get();
 
-    // Hitung total harga
-    $totalHarga = $keranjang->sum(function ($item) {
-        return $item->barang->harga;
-    });
+    // Buat data keranjang baru
+    $keranjang = new Keranjang();
+    $keranjang->id_barang = $request->id_barang;
+    $keranjang->id_user = $user->id;
+    $keranjang->total_harga = $request->total_harga; // Misalnya ada harga total di request
 
-    // Definisikan variabel $title
-    $title = "Keranjang Belanja";
+    // Simpan ke database
+    $keranjang->save();
 
-    // Pastikan variabel $keranjang tersedia di view bersama dengan $title
-    return view('guest.Keranjang', compact('keranjang', 'totalHarga', 'title'));
+    // Redirect ke halaman sebelumnya dengan pesan sukses
+    return redirect()->back()->with('success', 'Barang berhasil ditambahkan ke keranjang.');
 }
 
-    
+    public function showKeranjang()
+    {
+        $user = Auth::user();
+        $keranjang = Keranjang::where('id_user', $user->id)->with('barang')->get();
+        $totalHarga = $keranjang->sum(function ($item) {
+            return $item->barang->harga;
+        });
 
+        $title = "Keranjang Belanja";
+        return view('guest.Keranjang', compact('keranjang', 'totalHarga', 'title'));
+    }
+
+    // Fungsi untuk menghapus item dari keranjang
     public function hapusKeranjang(Request $request)
     {
-        // Validasi request
         $request->validate([
             'id' => 'required|exists:keranjang,id',
         ]);
 
-        // Hapus item dari keranjang
         Keranjang::where('id', $request->id)->delete();
-
         return redirect()->back()->with('success', 'Barang berhasil dihapus dari keranjang.');
+    }
+
+    // Fungsi untuk menyimpan pembayaran
+    public function Pembayaran(Request $request)
+    {
+        DB::beginTransaction();
+
+        try {
+            // Validasi data request
+            $validatedData = $request->validate([
+                'nama_penerima' => 'required|string|max:255',
+                'nohp_penerima' => 'required|string|max:15',
+                'email_penerima' => 'required|email|max:255',
+                'alamat_penerima' => 'required|string',
+                'metode' => 'required|in:COD,Transfer',
+                'bukti_pembayaran' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            ]);
+
+            if ($request->hasFile('bukti_pembayaran')) {
+                $imageName = time().'.'.$request->bukti_pembayaran->extension();  
+                $request->bukti_pembayaran->move(public_path('image/bukti'), $imageName);
+                $validatedData['bukti_pembayaran'] = $imageName;
+            }
+
+            $user = Auth::user();
+            $keranjang = Keranjang::where('id_user', $user->id)->get();
+
+            if ($keranjang->isEmpty()) {
+                return redirect()->back()->withErrors('Keranjang belanja Anda kosong.');
+            }
+
+            foreach ($keranjang as $item) {
+                $dataPembayaran = [
+                    'id_barang' => $item->id_barang,
+                    'id_user' => $user->id,
+                    'id_keranjang' => $item->id,
+                    'total_harga' => $item->barang->harga,
+                    'tanggal' => now(),
+                    'status' => 'Pending',
+                    'metode' => $request->metode,
+                    'nama_penerima' => $request->nama_penerima,
+                    'nohp_penerima' => $request->nohp_penerima,
+                    'email_penerima' => $request->email_penerima,
+                    'alamat_penerima' => $request->alamat_penerima,
+                    'bukti_pembayaran' => $validatedData['bukti_pembayaran'] ?? null,
+                ];
+
+                Log::info('Data Pembayaran:', $dataPembayaran);
+
+                Pembayaran::create($dataPembayaran);
+            }
+
+            Keranjang::where('id_user', $user->id)->delete();
+
+            DB::commit();
+
+            return redirect()->route('keranjang.show')->with('success', 'Pembayaran berhasil dibuat.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Error saat menyimpan pembayaran: '.$e->getMessage());
+            return redirect()->back()->withErrors('Terjadi kesalahan saat menyimpan pembayaran. Silakan coba lagi.');
+        }
     }
 }
 

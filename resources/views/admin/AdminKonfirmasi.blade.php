@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody class=" divide-y divide-gray-200">
-        <!-- row 1 -->
+        @foreach ($pembayaran as $pembayaranItem)
         <tr>
           <td class="px-6 py-4 whitespace-nowrap">
             <div class="flex items-center space-x-3">
@@ -24,23 +24,22 @@
                 </div>
               </div>
               <div>
-                <div class="font-bold">2024INV11</div>
-                <div class="text-sm opacity-50">Sultan Sadad</div>
+                <div class="font-bold">{{ $pembayaranItem->user->id }}</div>
+                <div class="text-sm opacity-50">{{ $pembayaranItem->user->name }}</div>
               </div>
             </div>
           </td>
-          <td class="px-6 py-4 whitespace-nowrap">Vans SK8 Low <br /><span class="badge badge-ghost badge-sm">Rp500.000</span></td>
-          <td class="px-6 py-4 whitespace-nowrap">Rekening</td>
+          <td class="px-6 py-4 whitespace-nowrap">{{ $pembayaranItem->barang->nama }} <br /><span class="badge badge-ghost badge-sm">Rp{{ number_format($pembayaranItem->barang->harga, 0, ',', '.') }}</span></td>
+          <td class="px-6 py-4 whitespace-nowrap">{{ $pembayaranItem->metode_pembayaran }}</td>
           <td>
-            <div class="badge badge-outline">Belum Dikonfirmasi</div>
+            <div class="badge badge-outline">{{ $pembayaranItem->status }}</div>
           </td>
           <td class="p-2 whitespace-nowrap">
             <div class="flex justify-center">
-              <!-- You can open the modal using ID.showModal() method -->
-              <button class="btn btn-ghost btn-xs me-8 text-xl font-bold" onclick="my_modal_3.showModal()">
+              <button class="btn btn-ghost btn-xs me-8 text-xl font-bold" onclick="document.getElementById('modal_{{ $pembayaranItem->id_pembayaran }}').showModal()">
                 <div><i class="fas fa-ellipsis-h fa-rotate-90"></i></div>
               </button>
-              <dialog id="my_modal_3" class="modal">
+              <dialog id="modal_{{ $pembayaranItem->id_pembayaran }}" class="modal">
                 <div class="modal-box w-11/12 max-w-3xl">
                   <form method="dialog">
                     <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-xl">✕</button>
@@ -51,52 +50,57 @@
                       <tbody>
                         <tr>
                           <th>Id</th>
-                          <td>3312301102</td>
+                          <td>{{ $pembayaranItem->id_pembayaran }}</td>
                         </tr>
                         <tr>
                           <th>Nama Barang</th>
-                          <td>Converse All Star</td>
+                          <td>{{ $pembayaranItem->barang->nama }}</td>
                         </tr>
                         <tr>
                           <th>Harga Barang</th>
-                          <td>Rp 500,000</td>
+                          <td>Rp{{ number_format($pembayaranItem->barang->harga, 0, ',', '.') }}</td>
                         </tr>
                         <tr>
                           <th>Ukuran</th>
-                          <td>40</td>
+                          <td>{{ $pembayaranItem->barang->ukuran }}</td>
                         </tr>
                         <tr>
                           <th>Gambar</th>
-                          <td><button class="btn btn-xs btn-outline">image</button></td>
+                          <td><img src="{{ asset('image/fotobarang/' . $pembayaranItem->barang->foto) }}" alt="Product Image" class="w-24 h-24 object-cover"></td>
                         </tr>
                         <tr>
                           <th>Metode Pembayaran</th>
-                          <td>Rekening</td>
+                          <td>{{ $pembayaranItem->metode_pembayaran }}</td>
                         </tr>
                         <tr>
                           <th>Alamat</th>
-                          <td>Batam Centre</td>
+                          <td>{{ $pembayaranItem->alamat }}</td>
                         </tr>
                         <tr>
                           <th>Bukti Pembayaran</th>
-                          <td><button class="btn btn-xs btn-outline">image</button></td>
+                          <td><img src="{{ asset('image/bukti/' . $pembayaranItem->bukti_pembayaran) }}" alt="Bukti Pembayaran" class="w-24 h-24 object-cover"></td>
                         </tr>
-                        
                       </tbody>
                     </table>
                   </div>
-                  <div class="flex justify-end mt-3">
-                          <div class="gap">
-                          <button class=" btn btn-sm btn-error text-white w-xs right-2 top-2">Tolak</button>
-                          <button class=" btn btn-sm btn-success text-white w-xs right-2 top-2">Konfirmasi</button>
-                          </div>
-                        </div>
+                  <div class="flex justify-end mt-3 gap-2">
+                    <form action="{{ route('admin.konfirmasiPembayaran') }}" method="POST">
+                      @csrf
+                      <input type="hidden" name="id_pembayaran" value="{{ $pembayaranItem->id_pembayaran }}">
+                      <button class="btn btn-success">Konfirmasi</button>
+                    </form>
+                    <form action="{{ route('admin.tolakPembayaran') }}" method="POST">
+                      @csrf
+                      <input type="hidden" name="id_pembayaran" value="{{ $pembayaranItem->id_pembayaran }}">
+                      <button class="btn btn-danger">Tolak</button>
+                    </form>
+                  </div>
                 </div>
               </dialog>
             </div>
           </td>
         </tr>
-
+        @endforeach
       </tbody>
     </table>
   </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Barang;
 use App\Models\User;
 use App\Models\Pesan;
+use App\Models\Pembayaran; 
 
 class AdminController extends Controller
 {
@@ -17,11 +18,14 @@ class AdminController extends Controller
     }
 
     public function AdminKonfirmasi()
-    {
-        return view('admin/AdminKonfirmasi', [
-            "title" => "Konfirmasi"
-        ]);
-    }
+{
+    $pembayaran = Pembayaran::with(['user', 'barang'])->get(); // Mengambil semua data pembayaran beserta relasi user dan barang
+    return view('admin/AdminKonfirmasi', [
+        "title" => "Konfirmasi",
+        "pembayaran" => $pembayaran // Mengirim data pembayaran ke tampilan
+    ]);
+}
+
 
     public function Barang()
     {
@@ -175,5 +179,34 @@ class AdminController extends Controller
         }
 
         return redirect('/admin/Barang')->with('success', 'Barang berhasil dihapus.');
+    }
+    public function konfirmasiPembayaran(Request $request)
+    {
+        $id_pembayaran = $request->input('id_pembayaran'); // Mengambil id_pembayaran dari request
+        $pembayaran = Pembayaran::find($id_pembayaran);
+        
+        if ($pembayaran) {
+            $pembayaran->status = 'Disetujui';
+            $pembayaran->save();
+
+            return redirect('/admin/AdminKonfirmasi')->with('success', 'Pembayaran telah dikonfirmasi.');
+        } else {
+            return redirect('/admin/AdminKonfirmasi')->with('error', 'Pembayaran tidak ditemukan.');
+        }
+    }
+
+    public function tolakPembayaran(Request $request)
+    {
+        $id_pembayaran = $request->input('id_pembayaran'); // Mengambil id_pembayaran dari request
+        $pembayaran = Pembayaran::find($id_pembayaran);
+        
+        if ($pembayaran) {
+            $pembayaran->status = 'Ditolak';
+            $pembayaran->save();
+
+            return redirect('/admin/AdminKonfirmasi')->with('success', 'Pembayaran telah ditolak.');
+        } else {
+            return redirect('/admin/AdminKonfirmasi')->with('error', 'Pembayaran tidak ditemukan.');
+        }
     }
 }

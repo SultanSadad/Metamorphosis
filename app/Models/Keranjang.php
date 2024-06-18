@@ -23,4 +23,10 @@ class Keranjang extends Model
     {
         return $this->belongsTo(User::class, 'id_user');
     }
+
+    // Relasi ke model Pembayaran
+    public function pembayaran()
+    {
+        return $this->hasMany(Pembayaran::class, 'id_keranjang');
+    }
 }

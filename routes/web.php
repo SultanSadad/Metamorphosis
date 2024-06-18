@@ -21,10 +21,11 @@ use App\Http\Controllers\adminController;
 //  });
 
 Route::get('/', [webController::class, 'index']);
+Route::get('/Login', [webController::class, 'Login']);
+Route::post('/Login', [webController::class, 'Autentikasi'])->name('login');
+Route::get('/Register', [webController::class, 'Register']);
 // customer
 Route::prefix('guest')->group(function () {
-    Route::get('/Login', [webController::class, 'Login']);
-    Route::post('/Login', [webController::class, 'Autentikasi'])->name('login');
     Route::get('/Register', [webController::class, 'Register']);
     Route::post('/create', [webController::class, 'create']);
     Route::get('/Profile', [webController::class, 'Profile']);
@@ -38,18 +39,22 @@ Route::prefix('guest')->group(function () {
     Route::post('/keranjang/hapus', [webController::class, 'hapusKeranjang'])->name('keranjang.hapus');
     Route::get('/DetailBarang/{id}', [webController::class, 'DetailBarang'])->name('DetailBarang');
     Route::get('/Bantuan', [webController::class, 'Bantuan']);
+    Route::post('/pembayaran', [WebController::class, 'Pembayaran'])->name('pembayaran.store');// Mengganti route store untuk pembayaran
 });
 
 Route::prefix('admin')->group(function () {
-    Route::get('/Dashboard', [adminController::class, 'mainAdmin']);
-    Route::get('/AdminKonfirmasi', [adminController::class, 'AdminKonfirmasi']);
-    Route::get('/Barang', [adminController::class, 'Barang']);
-    Route::get('/DataCustomer', [adminController::class, 'DataCustomer']);
-    Route::get('/DaftarBarang', [adminController::class, 'DaftarBarang']);
-    Route::get('/DaftarAdmin', [adminController::class, 'DaftarAdmin']);
-    Route::get('/Review', [adminController::class, 'Review']);
-    Route::post('/store', [adminController::class, 'store']);
-    Route::get('/{id}/edit', [adminController::class, 'edit']);
-    Route::put('/{id}', [adminController::class, 'update']);
-    Route::delete('/{id}', [adminController::class, 'destroy']);
+    Route::get('/Dashboard', [AdminController::class, 'mainAdmin']);
+    Route::get('/AdminKonfirmasi', [AdminController::class, 'AdminKonfirmasi']);
+    Route::get('/Barang', [AdminController::class, 'Barang']);
+    Route::get('/DataCustomer', [AdminController::class, 'DataCustomer']);
+    Route::get('/DaftarBarang', [AdminController::class, 'DaftarBarang']);
+    Route::get('/DaftarAdmin', [AdminController::class, 'DaftarAdmin']);
+    Route::get('/Review', [AdminController::class, 'Review']);
+    Route::post('/store', [AdminController::class, 'store'])->name('admin.store');
+    Route::get('/{id}/edit', [AdminController::class, 'edit'])->name('admin.edit');
+    Route::put('/{id}', [AdminController::class, 'update'])->name('admin.update');
+    Route::delete('/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
+    Route::post('/konfirmasi-pembayaran', [AdminController::class, 'konfirmasiPembayaran'])->name('admin.konfirmasiPembayaran');
+    Route::post('/tolak-pembayaran', [AdminController::class, 'tolakPembayaran'])->name('admin.tolakPembayaran');
 });
+

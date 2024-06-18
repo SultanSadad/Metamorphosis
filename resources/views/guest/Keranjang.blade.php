@@ -32,24 +32,27 @@
                 <p class="text-lg">Total</p>
                 <p class="text-lg font-bold">Rp {{ number_format($totalHarga, 0, ',', '.') }}</p>
             </div>
-            <button class="w-full bg-black text-white py-3 rounded-lg shadow-md hover:bg-gray-800 transition duration-300" onclick="my_modal_4.showModal()">Pembayaran</button>
+            <button class="w-full bg-black text-white py-3 rounded-lg shadow-md hover:bg-gray-800 transition duration-300" onclick="document.getElementById('my_modal_4').showModal()">Pembayaran</button>
             <!-- You can open the modal using ID.showModal() method -->
             <dialog id="my_modal_4" class="modal">
                 <div class="modal-box max-w-1xl">
                     <h3 class="font-bold text-lg text-center">Pembayaran</h3>
-                    <input type="text" placeholder="" class="input input-bordered w-full max-w-full mt-3" />
-                    <input type="text" placeholder="" class="input input-bordered w-full max-w-full mt-3" />
-                    <input type="text" placeholder="" class="input input-bordered w-full max-w-full mt-3" />
-                    <input type="text" placeholder="" class="input input-bordered w-full max-w-full mt-3" />
-                    <select class="select select-bordered w-full max-w-full mt-3">
-                        <option disabled selected>Pilih metode pembayaran</option>
-                        <option>COD</option>
-                        <option>Transfer</option>
-                    </select>
-                    <input type="file" class="file-input file-input-bordered file-input-md w-full max-w-full mt-3" />
-                    <div class="flex justify-end gap-3 mt-4">
-                        <button class="btn btn-success text-white">Kirim</button>
-                    </div>
+                    <form action="{{ route('pembayaran.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="text" name="nama_penerima" placeholder="Nama Penerima" class="input input-bordered w-full max-w-full mt-3" required />
+                        <input type="text" name="nohp_penerima" placeholder="No HP Penerima" class="input input-bordered w-full max-w-full mt-3" required />
+                        <input type="email" name="email_penerima" placeholder="Email Penerima" class="input input-bordered w-full max-w-full mt-3" required />
+                        <input type="text" name="alamat_penerima" placeholder="Alamat Lengkap Penerima" class="input input-bordered w-full max-w-full mt-3" required />
+                        <select name="metode" class="select select-bordered w-full max-w-full mt-3" required>
+                            <option disabled selected>Pilih metode pembayaran</option>
+                            <option value="COD">COD</option>
+                            <option value="Transfer">Transfer</option>
+                        </select>
+                        <input type="file" name="bukti_pembayaran" class="file-input file-input-bordered file-input-md w-full max-w-full mt-3" />
+                        <div class="flex justify-end gap-3 mt-4">
+                            <button type="submit" class="btn btn-success text-white">Kirim</button>
+                        </div>
+                    </form>
                 </div>
             </dialog>
             <p class="text-gray-500 text-sm mt-4">

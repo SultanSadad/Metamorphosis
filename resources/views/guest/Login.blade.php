@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Form Registrasi</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@1.14.2/dist/full.css" rel="stylesheet">
 </head>
 <body>
 
@@ -16,17 +17,18 @@
     <div class="alert alert-success">
         {{ session('success') }}
     </div>
-        @endif
+    @endif
 
     @if($errors->any())
-      <div class="aler alert-danger">
+      <div class="alert alert-danger">
         <ul>
-      @foreach($errors->all() as $item)   
-      <li>{{ $item }}</li>
-      @endforeach
-      </ul>
+          @foreach($errors->all() as $item)   
+          <li>{{ $item }}</li>
+          @endforeach
+        </ul>
       </div>
     @endif
+
     <form id="form-login" action="{{ route('login') }}" method="POST" class="w-full">
       @csrf
       <div class="mb-4">
@@ -46,6 +48,19 @@
     </form>
   </div>
 </div>
+
+@if(session('showModal'))
+<input type="checkbox" id="my-modal" class="modal-toggle" checked>
+<div class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Login Gagal</h3>
+    <p class="py-4">{{ session('error') }}</p>
+    <div class="modal-action">
+      <label for="my-modal" class="btn">Tutup</label>
+    </div>
+  </div>
+</div>
+@endif
 
 <script>
   // JavaScript code here

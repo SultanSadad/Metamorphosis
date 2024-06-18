@@ -16,4 +16,10 @@ class Barang extends Model
     {
         return $this->hasMany(Keranjang::class, 'id_barang');
     }
+
+    // Relasi ke model Pembayaran
+    public function pembayaran()
+    {
+        return $this->hasMany(Pembayaran::class, 'id_barang');
+    }
 }
