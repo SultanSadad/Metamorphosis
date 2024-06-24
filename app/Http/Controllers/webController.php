@@ -65,11 +65,19 @@ class webController extends Controller
 
     // Menampilkan halaman notifikasi
     public function Notifikasi()
-    {
-        return view('Notifikasi', [
-            "title" => "Notifikasi"
-        ]);
-    }
+{
+    $user = Auth::user();
+    $pembayaran = Pembayaran::where('id_user', $user->id)
+        ->with(['barang'])
+        ->orderBy('created_at', 'desc') // Jika ingin urutkan berdasarkan tanggal
+        ->get();
+
+    return view('guest.Notifikasi', [
+        "title" => "Notifikasi",
+        "pembayaran" => $pembayaran 
+    ]);
+}
+
 
     // Menampilkan halaman keranjang
     public function Keranjang()
@@ -254,6 +262,7 @@ public function addToKeranjang(Request $request)
     return redirect()->back()->with('success', 'Barang berhasil ditambahkan ke keranjang.');
 }
 
+
     public function showKeranjang()
     {
         $user = Auth::user();
@@ -338,6 +347,39 @@ public function addToKeranjang(Request $request)
             return redirect()->back()->withErrors('Terjadi kesalahan saat menyimpan pembayaran. Silakan coba lagi.');
         }
     }
+    public function acceptOrder($orderId)
+    {
+        $order = Order::find($orderId);
+        $order->status = 'accepted';
+        $order->save();
+
+        $order->user->notify(new OrderStatusNotification($order, 'accepted'));
+
+        return redirect()->back()->with('success', 'Order accepted.');
+    }
+
+    public function rejectOrder($orderId)
+    {
+        $order = Order::find($orderId);
+        $order->status = 'rejected';
+        $order->save();
+
+        $order->user->notify(new OrderStatusNotification($order, 'rejected'));
+
+        return redirect()->back()->with('error', 'Order rejected.');
+    }
+    public function reviewForm($orderId)
+{
+    $order = Order::find($orderId);
+    return view('review', compact('order'));
+}
+
+public function submitReview(Request $request, $orderId)
+{
+    $order = Order::find($orderId);
+    // Validate and save review
+    return redirect()->route('notifikasi')->with('success', 'Review submitted.');
+}
 }
 
 

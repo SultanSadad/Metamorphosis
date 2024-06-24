@@ -70,11 +70,11 @@
                         </tr>
                         <tr>
                           <th>Metode Pembayaran</th>
-                          <td>{{ $pembayaranItem->metode_pembayaran }}</td>
+                          <td>{{ $pembayaranItem->metode }}</td>
                         </tr>
                         <tr>
                           <th>Alamat</th>
-                          <td>{{ $pembayaranItem->alamat }}</td>
+                          <td>{{ $pembayaranItem->alamat_penerima }}</td>
                         </tr>
                         <tr>
                           <th>Bukti Pembayaran</th>

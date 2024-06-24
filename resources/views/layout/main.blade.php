@@ -47,8 +47,8 @@
             <a href="/guest/indexguest" class="text-xs mt-1 font-arial">Belanja</a>
             <a href="AboutUs" class="text-xs mt-1 font-arial">Tentang Kami</a>
             <a href="Privacy" class="text-xs mt-1 font-arial">Kebijakan Privasi</a>
-            <a href="" class="text-xs mt-1 font-arial">Bantuan</a>
-            <a href="Bantuan" class="text-xs mt-1 font-arial">Hubungin Kami</a>
+            <a href="Bantuan" class="text-xs mt-1 font-arial">Bantuan</a>
+            <a href="/guest/Notifikasi" class="text-xs mt-1 font-arial">Notifikasi</a>
             <button class="" onclick="my_modal_2.showModal()">
               <i class="fas fa-search search-icon"></i>
             </button>

@@ -186,14 +186,23 @@ class AdminController extends Controller
         $pembayaran = Pembayaran::find($id_pembayaran);
         
         if ($pembayaran) {
+            // Mengubah status pembayaran menjadi Disetujui
             $pembayaran->status = 'Disetujui';
             $pembayaran->save();
-
+    
+            // Mengubah status barang terkait menjadi Sold
+            $barang = Barang::find($pembayaran->id_barang);
+            if ($barang) {
+                $barang->status = 'Sold';
+                $barang->save();
+            }
+    
             return redirect('/admin/AdminKonfirmasi')->with('success', 'Pembayaran telah dikonfirmasi.');
         } else {
             return redirect('/admin/AdminKonfirmasi')->with('error', 'Pembayaran tidak ditemukan.');
         }
     }
+    
 
     public function tolakPembayaran(Request $request)
     {

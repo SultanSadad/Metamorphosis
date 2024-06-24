@@ -37,12 +37,36 @@
     </form>
 
     <!-- Input pencarian barang -->
-    <input class="h-12 ms-4 pl-10 pr-4 text-base placeholder-gray-500 border w-3/4 rounded-full focus:shadow-outline" type="search" placeholder="Cari Barang">
+    <input id="search-input" class="h-12 ms-4 pl-10 pr-4 text-base placeholder-gray-500 border w-3/4 rounded-full focus:shadow-outline" type="search" placeholder="Cari Barang" onkeyup="searchTable()" />
+    <script>
+    function searchTable() {
+        // Mendapatkan nilai input pencarian
+        var input = document.getElementById('search-input').value.toUpperCase();
+        // Mendapatkan tabel dan baris-barisnya
+        var table = document.getElementsByTagName('table')[0];
+        var tr = table.getElementsByTagName('tr');
+
+        // Loop melalui semua baris tabel, dan sembunyikan yang tidak cocok dengan pencarian
+        for (var i = 0; i < tr.length; i++) {
+            var td = tr[i].getElementsByTagName('td')[1]; // Kolom kedua berisi nama barang
+
+            if (td) {
+                var txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(input) > -1) {
+                    tr[i].style.display = '';
+                } else {
+                    tr[i].style.display = 'none';
+                }
+            }
+        }
+    }
+</script>
+
 </div>
 
 <!-- Konten dialog modal -->
 <div class="overflow-x-auto ms-8 mt-5 border rounded">
-    <table class="table">
+    <table  id="barang-table" class="table">
         <!-- head -->
         <thead>
             <tr>
