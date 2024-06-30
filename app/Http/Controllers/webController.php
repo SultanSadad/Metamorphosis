@@ -13,7 +13,9 @@ use App\Models\Keranjang;
 use App\Models\Pembayaran;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-
+use Illuminate\Support\Facades\File;
+use Barryvdh\DomPDF\Facade as PDF;
+use \Mpdf\Mpdf;
 
 class webController extends Controller
 {
@@ -32,6 +34,13 @@ class webController extends Controller
         return view('/', [
             "title" => "Welcome",
             "barang" => $barang,
+        ]);
+    }
+    public function Privacy()
+    {
+        $barang = Barang::all();
+        return view('/guest/Privacy', [
+            "title" => "Privacy",
         ]);
     }
     public function Bantuan()
@@ -65,18 +74,23 @@ class webController extends Controller
 
     // Menampilkan halaman notifikasi
     public function Notifikasi()
-{
-    $user = Auth::user();
-    $pembayaran = Pembayaran::where('id_user', $user->id)
-        ->with(['barang'])
-        ->orderBy('created_at', 'desc') // Jika ingin urutkan berdasarkan tanggal
-        ->get();
-
-    return view('guest.Notifikasi', [
-        "title" => "Notifikasi",
-        "pembayaran" => $pembayaran 
-    ]);
-}
+    {
+        // Mengambil user yang sedang terautentikasi
+        $user = Auth::user();
+    
+        // Mengambil data pembayaran yang terkait dengan user tersebut
+        $pembayaran = Pembayaran::where('id_user', $user->id)
+            ->with(['barang']) // Memuat relasi barang
+            ->orderBy('created_at', 'desc') // Mengurutkan berdasarkan tanggal pembuatan terbaru
+            ->get();
+    
+        // Mengirimkan data ke view 'guest.Notifikasi'
+        return view('guest.Notifikasi', [
+            "title" => "Notifikasi",
+            "pembayaran" => $pembayaran // Mengirimkan data pembayaran ke view
+        ]);
+    }
+    
 
 
     // Menampilkan halaman keranjang
@@ -139,12 +153,29 @@ public function Profile()
     // Menampilkan halaman index untuk guest
     public function indexguest()
     {
+        $pembayaran = Pembayaran::all();
         $barang = Barang::all();
-        return view('guest/indexguest', [
-            "title" => "indexguest",
+        return view('guest.indexguest', [
+            "title" => "index",
             "barang" => $barang,
+            "pembayaran" => $pembayaran // Pastikan pembayaran juga dikirim ke view
         ]);
     }
+
+    public function downloadPDF($id_pembayaran)
+{
+    $user = Auth::user();
+    
+        // Mengambil data pembayaran yang terkait dengan user tersebut
+        $pembayaran = Pembayaran::where('id_user', $user->id)
+            ->with(['barang']) // Memuat relasi barang
+            ->orderBy('created_at', 'desc') // Mengurutkan berdasarkan tanggal pembuatan terbaru
+            ->get();
+
+    $pdf = PDF::loadView('.pdf', compact('pembayaran'));
+    return $pdf->download('detail-pesanan-' . $id_pembayaran . '.pdf');
+}
+
 
     // Fungsi untuk autentikasi
     public function Autentikasi(Request $request)
@@ -164,7 +195,7 @@ public function Profile()
 
     if (Auth::attempt($infologin)) {
         if (auth::user()->role == 'admin') {
-            return redirect('/admin/Barang');
+            return redirect('/admin/Dashboard');
         } elseif (auth::user()->role == 'pembeli') {
             return redirect('/guest/indexguest');
         }
@@ -175,6 +206,12 @@ public function Profile()
         ])->withInput();
     }
 }
+public function logout()
+{
+    Auth::logout();
+    return redirect('/guest/login');
+}
+
     public function create(Request $request)
 {
     // Menyimpan input sementara ke dalam sesi
@@ -379,6 +416,71 @@ public function submitReview(Request $request, $orderId)
     $order = Order::find($orderId);
     // Validate and save review
     return redirect()->route('notifikasi')->with('success', 'Review submitted.');
+}
+public function view_pdf(){
+    $mpdf = new \Mpdf\Mpdf();
+    $mpdf->WriteHTML('<h1>Hello world!</h1>');
+    $mpdf->Output();
+}
+public function Adidas()
+{
+    $pembayaran = Pembayaran::all();
+    $barang = Barang::all();
+    return view('guest.Adidas', [
+        "title" => "Adidas",
+        "barang" => $barang,
+        "pembayaran" => $pembayaran // Pastikan pembayaran juga dikirim ke view
+    ]);
+}
+public function Nike()
+{
+    $pembayaran = Pembayaran::all();
+    $barang = Barang::all();
+    return view('guest.Nike', [
+        "title" => "Nike",
+        "barang" => $barang,
+        "pembayaran" => $pembayaran // Pastikan pembayaran juga dikirim ke view
+    ]);
+}
+public function Converse()
+{
+    $pembayaran = Pembayaran::all();
+    $barang = Barang::all();
+    return view('guest.Converse', [
+        "title" => "Converse",
+        "barang" => $barang,
+        "pembayaran" => $pembayaran // Pastikan pembayaran juga dikirim ke view
+    ]);
+}
+public function NewBalance()
+{
+    $pembayaran = Pembayaran::all();
+    $barang = Barang::all();
+    return view('guest.NewBalance', [
+        "title" => "NewBalance",
+        "barang" => $barang,
+        "pembayaran" => $pembayaran // Pastikan pembayaran juga dikirim ke view
+    ]);
+}
+public function OnitsukaTiger()
+{
+    $pembayaran = Pembayaran::all();
+    $barang = Barang::all();
+    return view('guest.OnitsukaTiger', [
+        "title" => "OnitsukaTiger",
+        "barang" => $barang,
+        "pembayaran" => $pembayaran // Pastikan pembayaran juga dikirim ke view
+    ]);
+}
+public function Vans()
+{
+    $pembayaran = Pembayaran::all();
+    $barang = Barang::all();
+    return view('guest.Vans', [
+        "title" => "index",
+        "barang" => $barang,
+        "pembayaran" => $pembayaran // Pastikan pembayaran juga dikirim ke view
+    ]);
 }
 }
 

@@ -29,8 +29,15 @@
               </div>
             </div>
           </td>
-          <td class="px-6 py-4 whitespace-nowrap">{{ $pembayaranItem->barang->nama }} <br /><span class="badge badge-ghost badge-sm">Rp{{ number_format($pembayaranItem->barang->harga, 0, ',', '.') }}</span></td>
-          <td class="px-6 py-4 whitespace-nowrap">{{ $pembayaranItem->metode_pembayaran }}</td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            @if ($pembayaranItem->barang)
+              {{ $pembayaranItem->barang->nama }} <br />
+              <span class="badge badge-ghost badge-sm">Rp{{ number_format($pembayaranItem->barang->harga, 0, ',', '.') }}</span>
+            @else
+              Barang tidak ditemukan
+            @endif
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">{{ $pembayaranItem->metode }}</td>
           <td>
             <div class="badge badge-outline">{{ $pembayaranItem->status }}</div>
           </td>
@@ -54,19 +61,19 @@
                         </tr>
                         <tr>
                           <th>Nama Barang</th>
-                          <td>{{ $pembayaranItem->barang->nama }}</td>
+                          <td>{{ $pembayaranItem->barang ? $pembayaranItem->barang->nama : 'Barang tidak ditemukan' }}</td>
                         </tr>
                         <tr>
                           <th>Harga Barang</th>
-                          <td>Rp{{ number_format($pembayaranItem->barang->harga, 0, ',', '.') }}</td>
+                          <td>Rp{{ number_format($pembayaranItem->barang ? $pembayaranItem->barang->harga : 0, 0, ',', '.') }}</td>
                         </tr>
                         <tr>
                           <th>Ukuran</th>
-                          <td>{{ $pembayaranItem->barang->ukuran }}</td>
+                          <td>{{ $pembayaranItem->barang ? $pembayaranItem->barang->ukuran : 'N/A' }}</td>
                         </tr>
                         <tr>
                           <th>Gambar</th>
-                          <td><img src="{{ asset('image/fotobarang/' . $pembayaranItem->barang->foto) }}" alt="Product Image" class="w-24 h-24 object-cover"></td>
+                          <td><img src="{{ $pembayaranItem->barang ? asset('image/fotobarang/' . $pembayaranItem->barang->foto) : '' }}" alt="Product Image" class="w-24 h-24 object-cover"></td>
                         </tr>
                         <tr>
                           <th>Metode Pembayaran</th>

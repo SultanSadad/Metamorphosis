@@ -25,7 +25,7 @@
 
             <!-- Tambahkan item-item sidebar di sini -->
             <ul class="menu w-full rounded-box">
-                <li><a><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a></li>
+                <li><a  href="/admin/Dashboard"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a></li>
                 <li><a href="/admin/DaftarAdmin"><i class="fas fa-user-shield mr-2"></i>Data Admin</a></li>
                 <li><a href="/admin/DataCustomer"><i class="fas fa-users mr-2"></i>Data Customer</a></li>
                 <li>

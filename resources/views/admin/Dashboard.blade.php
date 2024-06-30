@@ -1,205 +1,45 @@
 @extends('layout.mainAdmin')
 @section('main-admin')
-<div class="container px-7 mx-auto mt-9">
-        <h1 class="text-2xl font-bold mb-6">Konfirmasi Pembayaran</h1>
-        <div class="overflow-x-auto border rounded">
-  <table class="min-w-full divide-y divide-gray-200">
-    <thead class="bg-gray-50">
-      <tr>
-        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id/Name</th>
-        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Barang/Harga</th>
-        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Metode Pembayaran</th>
-        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bukti Pembayaran</th>
-        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
-      </tr>
-    </thead>
-    <tbody class="bg-white divide-y divide-gray-200">
-      <!-- row 1 -->
-      <tr>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <div class="flex items-center space-x-3">
-            <div class="avatar">
-              <div class="mask mask-circle w-12 h-12">
-                <img src="image/profile1.png" alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div class="font-bold">2024INV11</div>
-              <div class="text-sm opacity-50">Sultan Sadad</div>
-            </div>
-          </div>
-        </td>
-        <td class="px-6 py-4 whitespace-nowrap">Vans SK8 Low <br/><span class="badge badge-ghost badge-sm">Rp500.000</span></td>
-        <td class="px-6 py-4 whitespace-nowrap">Rekening</td>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <button class="btn btn-ghost btn-xs">image.jpg</button>
-        </td>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <button class="btn btn-ghost btn-xs">Konfirmasi</button>
-        </td>
-      </tr>
-      <!-- row 2 -->
-      <tr>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <div class="flex items-center space-x-3">
-            <div class="avatar">
-              <div class="mask mask-circle w-12 h-12">
-                <img src="image/pp.jpg" alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div class="font-bold">2024INV10</div>
-              <div class="text-sm opacity-50">Aditya Januarizki</div>
-            </div>
-          </div>
-        </td>
-        <td class="px-6 py-4 whitespace-nowrap">Nike Dunk <br/><span class="badge badge-ghost badge-sm">Rp700.000</span></td>
-        <td class="px-6 py-4 whitespace-nowrap">COD</td>
-        <td class="px-6 py-4 whitespace-nowrap">-</td>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <button class="btn btn-success btn-xs text-white">Diterima</button>
-        </td>
-      </tr>
-      <!-- 3 -->
-      <tr>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <div class="flex items-center space-x-3">
-            <div class="avatar">
-              <div class="mask mask-circle w-12 h-12">
-                <img src="image/pp2.jpg" alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div class="font-bold">2024INV13</div>
-              <div class="text-sm opacity-50">Mayaindah</div>
-            </div>
-          </div>
-        </td>
-        <td class="px-6 py-4 whitespace-nowrap">New Balance <br/><span class="badge badge-ghost badge-sm">Rp850.000</span></td>
-        <td class="px-6 py-4 whitespace-nowrap">Rekening</td>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <button class="btn btn-ghost btn-xs">image.jpg</button>
-        </td>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <button class="btn btn-success btn-xs text-white">Diterima</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <div class="flex items-center space-x-3">
-            <div class="avatar">
-              <div class="mask mask-circle w-12 h-12">
-                <img src="image/pp4.jpg" alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div class="font-bold">2024INV14</div>
-              <div class="text-sm opacity-50">Cici Yulita</div>
-            </div>
-          </div>
-        </td>
-        <td class="px-6 py-4 whitespace-nowrap">Onitsuka Tiger<br/><span class="badge badge-ghost badge-sm">Rp900.000</span></td>
-        <td class="px-6 py-4 whitespace-nowrap">Rekening</td>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <button class="btn btn-ghost btn-xs">image.jpg</button>
-        </td>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <button class="btn btn-ghost btn-xs">Konfirmasi</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <div class="flex items-center space-x-3">
-            <div class="avatar">
-              <div class="mask mask-circle w-12 h-12">
-                <img src="image/pp3.jpg" alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div class="font-bold">2024INV15</div>
-              <div class="text-sm opacity-50">Asyri Dwi</div>
-            </div>
-          </div>
-        </td>
-        <td class="px-6 py-4 whitespace-nowrap">Converse Low <br/><span class="badge badge-ghost badge-sm">Rp500.000</span></td>
-        <td class="px-6 py-4 whitespace-nowrap">COD</td>
-        <td class="px-6 py-4 whitespace-nowrap">-</td>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <button class="btn btn-success btn-xs text-white">Diterima</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <div class="flex items-center space-x-3">
-            <div class="avatar">
-              <div class="mask mask-circle w-12 h-12">
-                <img src="image/drake.jpg" alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div class="font-bold">2024INV17</div>
-              <div class="text-sm opacity-50">Drake</div>
-            </div>
-          </div>
-        </td>
-        <td class="px-6 py-4 whitespace-nowrap">Nike Dunk <br/><span class="badge badge-ghost badge-sm">Rp700.000</span></td>
-        <td class="px-6 py-4 whitespace-nowrap">Rekening</td>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <button class="btn btn-ghost btn-xs">image.jpg</button>
-        </td>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <button class="btn btn-error btn-xs text-white">Ditolak</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <div class="flex items-center space-x-3">
-            <div class="avatar">
-              <div class="mask mask-circle w-12 h-12">
-                <img src="image/hacker.jpg" alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div class="font-bold">2024INV18</div>
-              <div class="text-sm opacity-50">Hacker</div>
-            </div>
-          </div>
-        </td>
-        <td class="px-6 py-4 whitespace-nowrap">Adidas<br/><span class="badge badge-ghost badge-sm">Rp700.000</span></td>
-        <td class="px-6 py-4 whitespace-nowrap">Rekening</td>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <button class="btn btn-ghost btn-xs">image.jpg</button>
-        </td>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <button class="btn btn-success btn-xs text-white">Diterima</button>
-        </td>
-      </tr>
-      <tr>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <div class="flex items-center space-x-3">
-            <div class="avatar">
-              <div class="mask mask-circle w-12 h-12">
-                <img src="image/jason.jpg" alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div class="font-bold">2024INV20</div>
-              <div class="text-sm opacity-50">Jason</div>
-            </div>
-          </div>
-        </td>
-        <td class="px-6 py-4 whitespace-nowrap">Nike Dunk <br/><span class="badge badge-ghost badge-sm">Rp700.000</span></td>
-        <td class="px-6 py-4 whitespace-nowrap">Rekening</td>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <button class="btn btn-ghost btn-xs">image.jpg</button>
-        </td>
-        <td class="px-6 py-4 whitespace-nowrap">
-          <button class="btn btn-error btn-xs text-white">Ditolak</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
 
-</div>
+            <div class="container mx-auto p-4">
+                <h1 class="text-3xl font-bold mb-1">Hi, Admin</h1>
+                <p class="font-light mb-4">Selamat datang di pusat kendali aplikasi kami! Kami sangat senang Anda bergabung dengan tim kami. Di sini, Anda dapat dengan mudah mengelola konten, memantau kinerja, dan memastikan semuanya berjalan lancar.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white shadow-lg rounded-lg p-4">
+                        <img src="/image/PEMBELI (1).png" alt="Manage Buyers" class="w-full h-40 object-cover rounded-t-lg">
+                        <div class="p-4">
+                            <h2 class="text-xl font-semibold mb-2">Mengatur Data Pembeli</h2>
+                            <p class="mb-2">Pelajari cara mengelola data pembeli, menambahkan informasi kontak, dan memantau riwayat pembelian mereka. <a href="/admin/DataCustomer" class="text-blue-500">[Klik Disini]</a></p>
+                            
+                        </div>
+                    </div>
+                    <div class="bg-white shadow-lg rounded-lg p-4">
+                        <img src="/image/BARANG (1).png" alt="Manage Products" class="w-full h-40 object-cover rounded-t-lg">
+                        <div class="p-4">
+                            <h2 class="text-xl font-semibold mb-2">Mengatur Barang</h2>
+                            <p>Pelajari cara menambahkan, mengedit, dan menghapus produk sepatu bekas di katalog Anda. <a href="/admin/Barang" class="text-blue-500">[Klik Disini]</a></p>
+                            
+                        </div>
+                    </div>
+                    <div class="bg-white shadow-lg rounded-lg p-4">
+                        <img src="/image/PAYMENT (1).png" alt="Manage Payments" class="w-full h-40 object-cover rounded-t-lg">
+                        <div class="p-4">
+                            <h2 class="text-xl font-semibold mb-2">Mengelola Pembayaran</h2>
+                            <p>Pelajari cara memantau dan mengelola pembayaran yang masuk, serta memastikan transaksi berjalan lancar. <a href="/admin/AdminKonfirmasi" class="text-blue-500">[Klik Disini]</a></p>
+                           
+                        </div>
+                    </div>
+                    <div class="bg-white shadow-lg rounded-lg p-4">
+                        <img src="/image/DUKUNGAN (1).png" alt="Customer Support" class="w-full h-40 object-cover rounded-t-lg">
+                        <div class="p-4">
+                            <h2 class="text-xl font-semibold mb-2">Dukungan Pelanggan</h2>
+                            <p>Pelajari cara memberikan dukungan terbaik kepada pelanggan Anda dan menangani keluhan dengan efektif. <a href="/admin/Review" class="text-blue-500">[Klik Disini]</a></p>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
 @endsection

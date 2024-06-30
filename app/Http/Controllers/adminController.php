@@ -10,6 +10,12 @@ use App\Models\Pembayaran;
 
 class AdminController extends Controller
 {
+    public function Dashboard()
+    {
+        return view('Admin/Dashboard', [
+            "title" => "Dashboard"
+        ]);
+    }
     public function mainAdmin()
     {
         return view('layout/mainAdmin', [

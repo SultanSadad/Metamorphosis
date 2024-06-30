@@ -49,7 +49,6 @@
             <option value="" selected>Pilih Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
-            <option value="other">Other</option>
           </select>
         </div>
         <div class="mb-2">
@@ -60,7 +59,7 @@
           <button type="submit" name="submit" class="bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 px-44 rounded focus:outline-none focus:shadow-outline">Registrasi</button>
         </div>
       </form>
-      <p class="text-center">Sudah punya akun? <a href="/guest/Login" class="text-blue-900 font-bold">Masuk</a></p>
+      <p class="text-center">Sudah punya akun? <a href="/Login" class="text-blue-900 font-bold">Masuk</a></p>
     </div>
   </div>
 

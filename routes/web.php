@@ -23,9 +23,11 @@ Route::get('/Register', [webController::class, 'Register']);
 // Customer
 Route::prefix('guest')->group(function () {
     Route::get('/Register', [webController::class, 'Register']);
+    Route::post('/logout', [WebController::class, 'logout'])->name('logout');
     Route::post('/create', [webController::class, 'create']);
     Route::get('/Profile', [webController::class, 'Profile']);
     Route::get('/AboutUs', [webController::class, 'AboutUs']);
+    Route::get('/Privacy', [webController::class, 'Privacy']);
     Route::get('/indexguest', [webController::class, 'indexguest']);
     Route::get('/status', [webController::class, 'status']);
     Route::post('/accept-order/{orderId}', [webController::class, 'acceptOrder'])->name('order.accept');
@@ -40,11 +42,19 @@ Route::prefix('guest')->group(function () {
     Route::get('/DetailBarang/{id}', [webController::class, 'DetailBarang'])->name('DetailBarang');
     Route::get('/Bantuan', [webController::class, 'Bantuan']);
     Route::post('/pembayaran', [WebController::class, 'Pembayaran'])->name('pembayaran.store');
+    Route::get('guest/download-pdf/{id_pembayaran}', [WebController::class, 'downloadPDF'])->name('guest.download-pdf');
+    Route::get('/pdf', [WebController::class, 'View_pdf']);
+    Route::get('/Adidas', [webController::class, 'Adidas']);
+    Route::get('/Nike', [webController::class, 'Nike']);
+    Route::get('/Converse', [webController::class, 'Converse']);
+    Route::get('/NewBalance', [webController::class, 'NewBalance']);
+    Route::get('/OnitsukaTiger', [webController::class, 'OnitsukaTiger']);
+    Route::get('/Vans', [webController::class, 'Vans']);
 });
 
 // Admin
 Route::prefix('admin')->middleware('checkrole:admin')->group(function () {
-    Route::get('/Dashboard', [AdminController::class, 'mainAdmin']);
+    Route::get('/Dashboard', [AdminController::class, 'Dashboard']);
     Route::get('/AdminKonfirmasi', [AdminController::class, 'AdminKonfirmasi']);
     Route::get('/Barang', [AdminController::class, 'Barang']);
     Route::get('/DataCustomer', [AdminController::class, 'DataCustomer']);
